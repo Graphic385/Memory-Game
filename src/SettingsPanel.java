@@ -9,12 +9,8 @@ public class SettingsPanel extends JPanel {
 	private JRadioButton easyMode, mediumMode, hardMode;
 	private ButtonGroup modeSelection;
 	private JPanel cards;
-	private CardLayout cardLayout;
 	private String gameNames[] = { "Sequence Game", "Matching Game", "Verbal Memory Game" };
-	private JComboBox gameSelecter;
-	final static String sequenceGame = "Sequence Game";
-	final static String matchingGame = "Matching Game";
-	final static String verbalMemoryGame = "Verbal Memory Game";
+	private JComboBox<String> gameSelecter;
 
 	public SettingsPanel(Board board) {
 		this.board = board;
@@ -70,9 +66,9 @@ public class SettingsPanel extends JPanel {
 
 		// create the panel that contains the cards
 		cards = new JPanel(new CardLayout());
-		cards.add(card1, sequenceGame);
-		cards.add(card2, matchingGame);
-		cards.add(card3, verbalMemoryGame);
+		cards.add(card1, gameNames[0]);
+		cards.add(card2, gameNames[1]);
+		cards.add(card3, gameNames[2]);
 
 		gbc.gridy++;
 		add(cards, gbc);

@@ -3,3 +3,5 @@ Su: 4
 Kaley: 8
 Mr M: 8
 shirley: 13
+Monkey: 6
+B=B: 7
