@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Main (Gradle Build Output)",
+            "request": "launch",
+            "mainClass": "main.Main",
+            "projectName": "Memory Game",
+            "cwd": "${workspaceFolder}",
+            "classPaths": [
+                "${workspaceFolder}/build/classes/java/main",
+                "${workspaceFolder}/build/libs/*"
+            ],
+            "preLaunchTask": "Java: Clean and Build (Gradle)"
+        }
+    ]
+}
