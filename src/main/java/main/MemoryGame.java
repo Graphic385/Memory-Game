@@ -1,6 +1,7 @@
 package main;
 
 import static com.raylib.Raylib.DrawRectangle;
+import static com.raylib.Raylib.DrawRectangleRoundedLines;
 import static com.raylib.Raylib.DrawText;
 import static com.raylib.Raylib.GetCharPressed;
 import static com.raylib.Raylib.IsKeyPressed;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.raylib.Raylib.Color;
+import com.raylib.Raylib.Rectangle;
 
 public abstract class MemoryGame {
     protected boolean showStartScreen = true;
@@ -39,17 +41,17 @@ public abstract class MemoryGame {
     // --- End screen button colors (change here if needed) ---
     protected static final Color SAVE_SCORE_COLOR = com.raylib.Colors.SKYBLUE;
     protected static final Color LEADERBOARD_COLOR = com.raylib.Colors.LIGHTGRAY;
-    protected static final Color TRY_AGAIN_COLOR = com.raylib.Colors.LIME;
-    protected static final Color EXIT_COLOR = com.raylib.Colors.RED;
+    protected static final Color TRY_AGAIN_COLOR = new Color().r((byte) 0).g((byte) 100).b((byte) 0).a((byte) 255);
+    protected static final Color EXIT_COLOR = new Color().r((byte) 128).g((byte) 0).b((byte) 0).a((byte) 255);
     protected static final Color BUTTON_TEXT_COLOR = com.raylib.Colors.DARKGRAY;
 
     public MemoryGame(int centerX) {
         // Initialize end screen buttons with fixed colors and positions
         saveScoreButton = new Button(centerX - 200, 350, 150, 50, SAVE_SCORE_COLOR, SAVE_SCORE_COLOR, SAVE_SCORE_COLOR);
-        viewLeaderboardButton = new Button(centerX + 20, 350, 200, 50, LEADERBOARD_COLOR, LEADERBOARD_COLOR,
+        viewLeaderboardButton = new Button(centerX + 20, 350, 230, 50, LEADERBOARD_COLOR, LEADERBOARD_COLOR,
                 LEADERBOARD_COLOR);
         tryAgainButton = new Button(centerX - 200, 420, 150, 50, TRY_AGAIN_COLOR, TRY_AGAIN_COLOR, TRY_AGAIN_COLOR);
-        exitButton = new Button(centerX + 20, 420, 150, 50, EXIT_COLOR, EXIT_COLOR, EXIT_COLOR);
+        exitButton = new Button(centerX + 20, 420, 230, 50, EXIT_COLOR, EXIT_COLOR, EXIT_COLOR);
     }
 
     public abstract void drawScene();
@@ -72,14 +74,25 @@ public abstract class MemoryGame {
         return score;
     }
 
-    protected void drawEndScreen(int centerX, String gameOverText, Color gameOverColor, Color scoreColor,
-            Color textColor,
-            Color backgroundColor) {
-        DrawText(gameOverText, centerX - MeasureText(gameOverText, 48) / 2, 120, 48, gameOverColor);
-        DrawText("Your score: " + score, centerX - MeasureText("Your score: " + score, 32) / 2, 180, 32, scoreColor);
+    protected void drawEndScreen(int centerX, String gameOverText, Color backgroundColor) {
+        Color textColor = com.raylib.Colors.BLACK;
+        DrawText(gameOverText, centerX - MeasureText(gameOverText, 48) / 2, 120, 48, textColor);
+        DrawText("Your score: " + score, centerX - MeasureText("Your score: " + score, 32) / 2, 180, 32, textColor);
         DrawText("Enter your name to save score:", centerX - 200, 250, 28, textColor);
-        DrawRectangle(centerX - 100, 290, 200, 40, backgroundColor);
+        // Draw outline for textbox
+        DrawRectangleRoundedLines(new Rectangle().x(centerX - 110).y(290).width(280).height(40), 0.8f, 20,
+                com.raylib.Colors.BLACK);
+        // Draw player name
         DrawText(playerName, centerX - 95, 295, 28, textColor);
+        // Draw blinking cursor
+        int textWidth = MeasureText(playerName, 28);
+        int cursorX = centerX - 95 + textWidth;
+        int cursorY = 295;
+        int cursorHeight = 28;
+        if (((int) (System.currentTimeMillis() / 500) % 2) == 0 && playerName.length() < 16) {
+            DrawRectangle(cursorX, cursorY, 2, cursorHeight, textColor);
+        }
+
         saveScoreButton.setText("Save Score", 24, backgroundColor);
         saveScoreButton.draw();
         viewLeaderboardButton.setText("View Leaderboard", 24, backgroundColor);
@@ -89,7 +102,7 @@ public abstract class MemoryGame {
         exitButton.setText("Exit", 24, backgroundColor);
         exitButton.draw();
         if (!saveMessage.isEmpty()) {
-            DrawText(saveMessage, centerX - MeasureText(saveMessage, 24) / 2, 480, 24, scoreColor);
+            DrawText(saveMessage, centerX - MeasureText(saveMessage, 24) / 2, 480, 24, textColor);
         }
         if (showLeaderboard) {
             DrawRectangle(centerX - 250, 520, 500, 200, backgroundColor);
@@ -132,44 +145,9 @@ public abstract class MemoryGame {
         }
         String className = this.getClass().getSimpleName();
         String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
-        List<String> lines = new ArrayList<>();
-        boolean nameFound = false;
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                lines.add(line);
-            }
-        } catch (IOException e) {
-            // File may not exist yet, that's fine
-        }
-        List<String> updatedLines = new ArrayList<>();
-        for (String l : lines) {
-            String[] parts = l.split(":");
-            if (parts.length == 2 && parts[0].equals(playerName)) {
-                nameFound = true;
-                int oldScore;
-                try {
-                    oldScore = Integer.parseInt(parts[1]);
-                } catch (NumberFormatException ex) {
-                    oldScore = 0;
-                }
-                // Only update if new score is higher
-                if (score > oldScore) {
-                    updatedLines.add(playerName + ":" + score);
-                } else {
-                    updatedLines.add(l);
-                }
-            } else {
-                updatedLines.add(l);
-            }
-        }
-        if (!nameFound) {
-            updatedLines.add(playerName + ":" + score);
-        }
-        try (FileWriter fw = new FileWriter(fileName, false); BufferedWriter bw = new BufferedWriter(fw)) {
-            for (String l : updatedLines) {
-                bw.write(l + "\n");
-            }
+        try (FileWriter fw = new FileWriter(fileName, true); BufferedWriter bw = new BufferedWriter(fw)) {
+            System.out.println("score is " + score);
+            bw.write(playerName + ":" + score + "\n");
             scoreSaved = true;
             saveMessage = "Score saved!";
         } catch (IOException e) {

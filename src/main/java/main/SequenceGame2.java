@@ -32,7 +32,7 @@ public class SequenceGame2 extends MemoryGame {
         int windowWidth = GetScreenWidth();
         int centerX = windowWidth / 2;
         if (isGameOver) {
-            drawEndScreen(centerX, "Game Over!", tileColor, tileColor, tileColor, background);
+            drawEndScreen(centerX, "Game Over!", background);
         } else {
             if (showStartScreen) {
                 DrawText("Sequence Memory Game", centerX - MeasureText("Sequence Memory Game", 40) / 2, 100, 40,

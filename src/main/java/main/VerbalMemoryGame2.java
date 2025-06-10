@@ -130,8 +130,7 @@ public class VerbalMemoryGame2 extends MemoryGame {
             DrawText("Press ENTER to start", centerX - MeasureText("Press ENTER to start", 28) / 2, 350, 28,
                     maroon);
         } else if (isGameOver) {
-            Color c = new Color().r((byte) 53).g((byte) 117).b((byte) 194).a((byte) 255);
-            drawEndScreen(centerX, "Game Over!", c, c, c, background);
+            drawEndScreen(centerX, "Game Over!", background);
         } else {
             DrawText(currentWord, centerX - MeasureText(currentWord, 48) / 2, 200, 48, black);
             DrawText("Score: " + score + "    Lives: " + lives,
