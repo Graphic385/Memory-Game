@@ -1,0 +1,2431 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffd444e9e6f, pid=22604, tid=22256
+#
+# JRE version: Java(TM) SE Runtime Environment (22.0.1+8) (build 22.0.1+8-16)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (22.0.1+8-16, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Problematic frame:
+# C  [jniRaylib.dll+0x119e6f]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:+ShowCodeDetailsInExceptionMessages main.Main
+
+Host: 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz, 8 cores, 7G,  Windows 11 , 64 bit Build 26100 (10.0.26100.3912)
+Time: Thu Jun  5 13:02:55 2025 Eastern Daylight Time elapsed time: 424.375501 seconds (0d 0h 7m 4s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001b22e2bf4f0):  JavaThread "main"             [_thread_in_native, id=22256, stack(0x0000009824c00000,0x0000009824d00000) (1024K)]
+
+Stack: [0x0000009824c00000,0x0000009824d00000],  sp=0x0000009824cfef00,  free space=1019k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [jniRaylib.dll+0x119e6f]  (no source info available)
+C  [jniRaylib.dll+0x121412]  (no source info available)
+C  [jniRaylib.dll+0x3a935]  (no source info available)
+C  0x000001b23e1ba8d5  (no source info available)
+
+The last pc belongs to native nmethod (printed below).
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 804  com.raylib.Raylib.DrawRectangleRounded(Lcom/raylib/Raylib$Rectangle;FILcom/raylib/Raylib$Color;)V (0 bytes) @ 0x000001b23e1ba82c [0x000001b23e1ba7a0+0x000000000000008c]
+J 823 c1 main.Button.draw()V (524 bytes) @ 0x000001b2367cb554 [0x000001b2367cab00+0x0000000000000a54]
+J 820 c1 main.TitleScreen.draw()V (21 bytes) @ 0x000001b2367ca354 [0x000001b2367ca260+0x00000000000000f4]
+j  main.Main.main([Ljava/lang/String;)V+73
+v  ~StubRoutines::call_stub 0x000001b23dbb100d
+
+siginfo: EXCEPTION_ACCESS_VIOLATION (0xc0000005), writing address 0x000001b291afd000
+
+
+Registers:
+RAX=0x000001b291afc990, RBX=0x00000000ffd2883e, RCX=0x000000000000019b, RDX=0x000000000000019b
+RSP=0x0000009824cfef00, RBP=0x00000000000000ff, RSI=0x0000000000000001, RDI=0x0000000000000001
+R8 =0x000001b291e88ce0, R9 =0x0000000000000000, R10=0x00007ffd20fc12d0, R11=0x000000000000000e
+R12=0x0000000000000000, R13=0x0000000000000005, R14=0x00000000000000d2, R15=0x0000000000000088
+RIP=0x00007ffd444e9e6f, EFLAGS=0x0000000000010297
+
+
+Register to memory mapping:
+
+RAX=0x000001b291afc990 points into unknown readable memory: 0x43ce000044190000 | 00 00 19 44 00 00 ce 43
+RBX=0x00000000ffd2883e is an unallocated location in the heap
+RCX=0x000000000000019b is an unknown value
+RDX=0x000000000000019b is an unknown value
+RSP=0x0000009824cfef00 is pointing into the stack for thread: 0x000001b22e2bf4f0
+RBP=0x00000000000000ff is an unknown value
+RSI=0x0000000000000001 is an unknown value
+RDI=0x0000000000000001 is an unknown value
+R8 =0x000001b291e88ce0 points into unknown readable memory: 0x000001b200002000 | 00 20 00 00 b2 01 00 00
+R9 =0x0 is null
+R10=0x00007ffd20fc12d0 jvm.dll
+R11=0x000000000000000e is an unknown value
+R12=0x0 is null
+R13=0x0000000000000005 is an unknown value
+R14=0x00000000000000d2 is an unknown value
+R15=0x0000000000000088 is an unknown value
+
+Top of Stack: (sp=0x0000009824cfef00)
+0x0000009824cfef00:   0000009824cff050 00000000000003d8
+0x0000009824cfef10:   000001b28d471c78 000001b22e2bf4f0
+0x0000009824cfef20:   0000000043b40000 0000000000000000
+0x0000009824cfef30:   3e8777a543d20000 0000000000000000
+0x0000009824cfef40:   0000000040c90fdb 0000000000000000
+0x0000009824cfef50:   00000000ffd2883e 00007ffd444f1412
+0x0000009824cfef60:   0000009824cff050 0000000000000000
+0x0000009824cfef70:   000001b28d471c78 000001b22e2bfb78
+0x0000009824cfef80:   000001b242580000 4238000041000000
+0x0000009824cfef90:   4000000041100000 441b000041900000
+0x0000009824cfefa0:   4443000043d20000 4411000044480000
+0x0000009824cfefb0:   0000009844160000 0000009824cff110
+0x0000009824cfefc0:   43d20000441b0000 43d2000044430000
+0x0000009824cfefd0:   4411000044430000 44110000441b0000
+0x0000009824cfefe0:   4387000043340000 42b4000000000000
+0x0000009824cfeff0:   00007443a79eb128 000001b22e2bf4f0
+0x0000009824cff000:   0000000000000000 0000000000000000
+0x0000009824cff010:   0000000000000000 0000000000000000
+0x0000009824cff020:   0000000000000000 0000000000000000
+0x0000009824cff030:   0000000000000000 0000000000000000
+0x0000009824cff040:   0000000000000000 0000000000000000
+0x0000009824cff050:   0000000000000000 0000000000000000
+0x0000009824cff060:   0000000000000000 0000000000000000
+0x0000009824cff070:   0000000000000000 0000000000000000
+0x0000009824cff080:   0000000000000000 0000000000000000
+0x0000009824cff090:   000000003e4ccccd 0000000000000000
+0x0000009824cff0a0:   0000009824cff170 000001b22e2bf4f0
+0x0000009824cff0b0:   000001b2917ef180 0000009824cff2d0
+0x0000009824cff0c0:   000001b291e0ea80 0000009824cff1b0
+0x0000009824cff0d0:   0000000000000000 0000009824cff180
+0x0000009824cff0e0:   000001b22e2bf8b0 00007ffd4440a935
+0x0000009824cff0f0:   0000009824cff170 00000000000002b8 
+
+Instructions: (pc=0x00007ffd444e9e6f)
+0x00007ffd444e9d6f:   f3 0f 10 0d 01 d8 10 00 f3 41 0f 59 c8 44 0f 28
+0x00007ffd444e9d7f:   c2 f3 0f 58 3d e4 d7 10 00 f3 44 0f 58 c1 f3 44
+0x00007ffd444e9d8f:   0f 58 05 e6 d7 10 00 4c 8b 05 e3 d6 10 00 49 63
+0x00007ffd444e9d9f:   40 04 48 8d 0c c0 49 8b 40 08 8b 0c c8 8d 0c 8d
+0x00007ffd444e9daf:   fc ff ff ff 39 0d ef d6 10 00 7e 6e 49 63 40 18
+0x00007ffd444e9dbf:   49 8b 48 10 48 03 c0 8b 54 c1 f0 83 fa 01 75 0b
+0x00007ffd444e9dcf:   84 54 c1 f4 75 54 8d 4a 02 eb 43 83 fa 04 75 20
+0x00007ffd444e9ddf:   8b 4c c1 f4 b8 56 55 55 55 f7 e9 8b c2 c1 e8 1f
+0x00007ffd444e9def:   03 d0 8d 04 52 3b c8 75 31 b9 04 00 00 00 eb 1e
+0x00007ffd444e9dff:   83 fa 07 75 25 8b 44 c1 f4 25 03 00 00 80 7d 07
+0x00007ffd444e9e0f:   ff c8 83 c8 fc ff c0 85 c0 75 0f 8d 48 05 e8 0e
+0x00007ffd444e9e1f:   96 ff ff 4c 8b 05 57 d6 10 00 49 63 40 04 4d 8b
+0x00007ffd444e9e2f:   40 08 4c 8d 0c c0 8b 05 6d d6 10 00 8d 0c 40 4b
+0x00007ffd444e9e3f:   8b 44 c8 08 48 63 d1 f3 0f 11 34 90 48 8b 0d 2e
+0x00007ffd444e9e4f:   d6 10 00 48 63 41 04 4c 8b 41 08 4c 8d 0c c0 8b
+0x00007ffd444e9e5f:   05 44 d6 10 00 8d 0c 40 4b 8b 44 c8 08 48 63 d1
+0x00007ffd444e9e6f:   f3 0f 11 7c 90 04 48 8b 0d 04 d6 10 00 48 63 41
+0x00007ffd444e9e7f:   04 4c 8b 41 08 4c 8d 0c c0 8b 05 1a d6 10 00 8d
+0x00007ffd444e9e8f:   0c 40 4b 8b 44 c8 08 48 63 d1 f3 44 0f 11 44 90
+0x00007ffd444e9e9f:   08 48 8b 0d d9 d5 10 00 f3 0f 10 05 fd d5 10 00
+0x00007ffd444e9eaf:   48 63 41 04 48 8b 51 08 4c 8d 04 c0 8b 05 e7 d5
+0x00007ffd444e9ebf:   10 00 03 c0 48 63 c8 4a 8b 44 c2 10 f3 0f 11 04
+0x00007ffd444e9ecf:   88 48 8b 0d a9 d5 10 00 f3 0f 10 05 d1 d5 10 00
+0x00007ffd444e9edf:   48 63 41 04 48 8b 51 08 4c 8d 04 c0 8b 05 b7 d5
+0x00007ffd444e9eef:   10 00 03 c0 48 63 c8 4a 8b 44 c2 10 f3 0f 11 44
+0x00007ffd444e9eff:   88 04 48 8b 0d 78 d5 10 00 f3 0f 10 05 a4 d5 10
+0x00007ffd444e9f0f:   00 48 63 41 04 4c 8b 41 08 4c 8d 0c c0 8b 05 86
+0x00007ffd444e9f1f:   d5 10 00 8d 0c 40 4b 8b 44 c8 18 48 63 d1 f3 0f
+0x00007ffd444e9f2f:   11 04 90 48 8b 0d 47 d5 10 00 f3 0f 10 05 77 d5
+0x00007ffd444e9f3f:   10 00 48 63 41 04 4c 8b 41 08 4c 8d 0c c0 8b 05
+0x00007ffd444e9f4f:   55 d5 10 00 8d 0c 40 4b 8b 44 c8 18 48 63 d1 f3
+0x00007ffd444e9f5f:   0f 11 44 90 04 48 8b 0d 15 d5 10 00 f3 0f 10 05 
+
+
+Stack slot to memory mapping:
+
+stack at sp + 0 slots: 0x0000009824cff050 is pointing into the stack for thread: 0x000001b22e2bf4f0
+stack at sp + 1 slots: 0x00000000000003d8 is an unknown value
+stack at sp + 2 slots: {method} {0x000001b28d471c80} 'init' '(JJJJ)V' in 'org/bytedeco/javacpp/Pointer'
+stack at sp + 3 slots: 0x000001b22e2bf4f0 is a thread
+stack at sp + 4 slots: 0x0000000043b40000 is an unknown value
+stack at sp + 5 slots: 0x0 is null
+stack at sp + 6 slots: 0x3e8777a543d20000 is an unknown value
+stack at sp + 7 slots: 0x0 is null
+
+
+Compiled method (n/a) 424542  804     n 0       com.raylib.Raylib::DrawRectangleRounded (native)
+ total in heap  [0x000001b23e1ba610,0x000001b23e1baa08] = 1016
+ relocation     [0x000001b23e1ba768,0x000001b23e1ba7a0] = 56
+ main code      [0x000001b23e1ba7a0,0x000001b23e1ba9f9] = 601
+ stub code      [0x000001b23e1ba9f9,0x000001b23e1baa00] = 7
+ oops           [0x000001b23e1baa00,0x000001b23e1baa08] = 8
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x000001b28d41ac18} 'DrawRectangleRounded' '(Lcom/raylib/Raylib$Rectangle;FILcom/raylib/Raylib$Color;)V' in 'com/raylib/Raylib'
+  # parm0:    rdx:rdx   = 'com/raylib/Raylib$Rectangle'
+  # parm1:    xmm0      = float
+  # parm2:    r8        = int
+  # parm3:    r9:r9     = 'com/raylib/Raylib$Color'
+  #           [sp+0x80]  (sp of caller)
+  0x000001b23e1ba7a0: 448b 5208 | 49bb 0000 | 004c b201 | 0000 4d03 | d349 3bc2 | 0f84 0600 
+
+  0x000001b23e1ba7b8: ;   {runtime_call ic_miss_stub}
+  0x000001b23e1ba7b8: 0000 e9c1 | 41a4 ff90 
+[Verified Entry Point]
+  0x000001b23e1ba7c0: 8984 2400 | 80ff ff55 | 488b ec48 | 83ec 7090 | 4181 7f20 | 0100 0000 
+
+  0x000001b23e1ba7d8: ;   {runtime_call StubRoutines (final stubs)}
+  0x000001b23e1ba7d8: 7405 e8a1 | c2a2 ff4c | 894c 2440 | 4983 f900 | 488d 4424 | 4048 0f44 | 4424 4048 | 8944 2428 
+  0x000001b23e1ba7f8: 4c89 4424 | 20c5 f928 | d848 8954 | 2430 4883 | fa00 4c8d | 4424 304c | 0f44 4424 
+
+  0x000001b23e1ba814: ;   {oop(a 'java/lang/Class'{0x000000008beefd00} = 'com/raylib/Raylib')}
+  0x000001b23e1ba814: 3049 be00 | fdee 8b00 | 0000 004c | 8974 2460 | 4c8d 7424 | 6049 8bd6 
+
+  0x000001b23e1ba82c: ;   {internal_word}
+  0x000001b23e1ba82c: c5f8 7749 | ba2c a81b | 3eb2 0100 | 004d 8997 | a803 0000 | 4989 a7a0 
+
+  0x000001b23e1ba844: ;   {external_word}
+  0x000001b23e1ba844: 0300 0049 | ba9c 30f9 | 20fd 7f00 | 0041 803a | 000f 845c | 0000 0052 | 4150 4883 | ec10 c5fb 
+  0x000001b23e1ba864: ;   {metadata({method} {0x000001b28d41ac18} 'DrawRectangleRounded' '(Lcom/raylib/Raylib$Rectangle;FILcom/raylib/Raylib$Color;)V' in 'com/raylib/Raylib')}
+  0x000001b23e1ba864: 111c 2448 | ba10 ac41 | 8db2 0100 | 0049 8bcf | 4883 ec20 | 40f6 c40f | 0f84 1900 | 0000 4883 
+  0x000001b23e1ba884: ;   {runtime_call}
+  0x000001b23e1ba884: ec08 48b8 | 40b5 a920 | fd7f 0000 | ffd0 4883 | c408 e90c 
+
+  0x000001b23e1ba898: ;   {runtime_call}
+  0x000001b23e1ba898: 0000 0048 | b840 b5a9 | 20fd 7f00 | 00ff d048 | 83c4 20c5 | fb10 1c24 | 4883 c410 | 4158 5a49 
+  0x000001b23e1ba8b8: 8d8f c003 | 0000 41c7 | 8754 0400 | 0004 0000 
+
+  0x000001b23e1ba8c8: ;   {runtime_call}
+  0x000001b23e1ba8c8: 0048 b870 | a840 44fd | 7f00 00ff | d0c5 f877 | 41c7 8754 | 0400 0005 | 0000 00f0 | 8344 24c0 
+  0x000001b23e1ba8e8: 0049 3baf | 5804 0000 | 0f87 0e00 | 0000 4183 | bf50 0400 | 0000 0f84 | 2300 0000 | c5f8 7749 
+  0x000001b23e1ba908: 8bcf 4c8b | e448 83ec | 2048 83e4 
+
+  0x000001b23e1ba914: ;   {runtime_call}
+  0x000001b23e1ba914: f048 b8d0 | 1e74 20fd | 7f00 00ff | d049 8be4 | 4d33 e441 | c787 5404 | 0000 0800 | 0000 4183 
+  0x000001b23e1ba934: bfd0 0400 | 0002 0f84 | 9400 0000 
+
+  0x000001b23e1ba940: ;   {external_word}
+  0x000001b23e1ba940: 49ba 9c30 | f920 fd7f | 0000 4180 | 3a00 0f84 | 4400 0000 
+
+  0x000001b23e1ba954: ;   {metadata({method} {0x000001b28d41ac18} 'DrawRectangleRounded' '(Lcom/raylib/Raylib$Rectangle;FILcom/raylib/Raylib$Color;)V' in 'com/raylib/Raylib')}
+  0x000001b23e1ba954: 48ba 10ac | 418d b201 | 0000 498b | cf48 83ec | 2040 f6c4 | 0f0f 8419 | 0000 0048 
+
+  0x000001b23e1ba970: ;   {runtime_call}
+  0x000001b23e1ba970: 83ec 0848 | b840 b5a9 | 20fd 7f00 | 00ff d048 | 83c4 08e9 | 0c00 0000 
+
+  0x000001b23e1ba988: ;   {runtime_call}
+  0x000001b23e1ba988: 48b8 40b5 | a920 fd7f | 0000 ffd0 | 4883 c420 | 49c7 87a0 | 0300 0000 | 0000 0049 | c787 a803 
+  0x000001b23e1ba9a8: 0000 0000 | 0000 c5f8 | 7749 8b8f | 3004 0000 | c781 0001 | 0000 0000 | 0000 c949 | 837f 0800 
+  0x000001b23e1ba9c8: 0f85 0100 
+
+  0x000001b23e1ba9cc: ;   {runtime_call StubRoutines (initial stubs)}
+  0x000001b23e1ba9cc: 0000 c3e9 | 2c65 9fff | c5f8 774c | 8be4 4883 | ec20 4883 
+
+  0x000001b23e1ba9e0: ;   {runtime_call}
+  0x000001b23e1ba9e0: e4f0 48b8 | 90ed a920 | fd7f 0000 | ffd0 498b | e44d 33e4 | e947 ffff | fff4 f4f4 | f4f4 f4f4 
+[/MachCode]
+
+
+Compiled method (c1) 424546  823       3       main.Button::draw (524 bytes)
+ total in heap  [0x000001b2367ca590,0x000001b2367ccbb8] = 9768
+ relocation     [0x000001b2367ca6e8,0x000001b2367caab8] = 976
+ constants      [0x000001b2367caac0,0x000001b2367cab00] = 64
+ main code      [0x000001b2367cab00,0x000001b2367cbea8] = 5032
+ stub code      [0x000001b2367cbea8,0x000001b2367cc158] = 688
+ oops           [0x000001b2367cc158,0x000001b2367cc160] = 8
+ metadata       [0x000001b2367cc160,0x000001b2367cc190] = 48
+ scopes data    [0x000001b2367cc190,0x000001b2367cc668] = 1240
+ scopes pcs     [0x000001b2367cc668,0x000001b2367ccaf8] = 1168
+ dependencies   [0x000001b2367ccaf8,0x000001b2367ccb00] = 8
+ nul chk table  [0x000001b2367ccb00,0x000001b2367ccbb8] = 184
+
+
+[Constant Pool]
+             Address          hex4                    hex8      
+  0x000001b2367caac0:   0x00000000      0x4000000000000000      
+  0x000001b2367caac4:   0x40000000                              
+  0x000001b2367caac8:   0x40000000      0x3e4ccccd40000000      
+  0x000001b2367caacc:   0x3e4ccccd                              
+  0x000001b2367caad0:   0x3e4ccccd      0x3e4ccccd3e4ccccd      
+  0x000001b2367caad4:   0x3e4ccccd                              
+  0x000001b2367caad8:   0x3e4ccccd      0x400000003e4ccccd      
+  0x000001b2367caadc:   0x40000000                              
+  0x000001b2367caae0:   0x40000000      0x0000000040000000      
+  0x000001b2367caae4:   0x00000000                              
+  0x000001b2367caae8:   0x40000000      0x4000000040000000      
+  0x000001b2367caaec:   0x40000000                              
+  0x000001b2367caaf0:   0xf4f4f4f4      0xf4f4f4f4f4f4f4f4      
+  0x000001b2367caaf4:   0xf4f4f4f4                              
+  0x000001b2367caaf8:   0xf4f4f4f4      0xf4f4f4f4f4f4f4f4      
+  0x000001b2367caafc:   0xf4f4f4f4                              
+
+[MachCode]
+[Entry Point]
+  # {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button'
+  #           [sp+0xe0]  (sp of caller)
+  0x000001b2367cab00: ;   {no_reloc}
+  0x000001b2367cab00: 448b 5208 | 49bb 0000 | 004c b201 | 0000 4d03 | d34c 3bd0 
+
+  0x000001b2367cab14: ;   {runtime_call ic_miss_stub}
+  0x000001b2367cab14: 0f85 663e | 4307 660f | 1f44 0000 
+[Verified Entry Point]
+  0x000001b2367cab20: 8984 2400 | 80ff ff55 | 4881 ecd0 | 0000 0090 | 4181 7f20 | 0100 0000 
+
+  0x000001b2367cab38: ;   {runtime_call StubRoutines (final stubs)}
+  0x000001b2367cab38: 7405 e841 | bf41 0748 | 8954 2448 
+
+  0x000001b2367cab44: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cab44: 48be 305f | 4d8d b201 | 0000 8bbe | cc00 0000 | 83c7 0289 | becc 0000 | 0081 e7fe | 0700 0085 
+  0x000001b2367cab64: ff0f 840f 
+
+  0x000001b2367cab68: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cab68: 1200 0048 | be30 5f4d | 8db2 0100 | 0048 8386 | 1801 0000 
+
+  0x000001b2367cab7c: ;   {static_call}
+  0x000001b2367cab7c: 0166 90e8 
+
+  0x000001b2367cab80: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic GetMousePosition {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@0 (line 112)
+  0x000001b2367cab80: 5ce5 9e07 
+
+  0x000001b2367cab84: ;   {other}
+  0x000001b2367cab84: 0f1f 8400 | f405 0000 
+
+  0x000001b2367cab8c: ; implicit exception: dispatches to 0x000001b2367cbd9b
+  0x000001b2367cab8c: 483b 0048 
+
+  0x000001b2367cab90: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cab90: 8bd0 48be | 305f 4d8d | b201 0000 
+
+  0x000001b2367cab9c: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cab9c: 49ba 88a7 | 004d b201 | 0000 4c89 | 9630 0100 | 0048 8386 | 3801 0000 | 0148 8bd0 | 4889 4424 
+  0x000001b2367cabbc: ;   {optimized virtual_call}
+  0x000001b2367cabbc: 5066 90e8 
+
+  0x000001b2367cabc0: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@5 (line 113)
+  0x000001b2367cabc0: fce0 9e07 
+
+  0x000001b2367cabc4: ;   {other}
+  0x000001b2367cabc4: 0f1f 8400 | 3406 0001 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cabd4: ; implicit exception: dispatches to 0x000001b2367cbda0
+  0x000001b2367cabd4: 483b 0648 
+
+  0x000001b2367cabd8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cabd8: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cabe4: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cabe4: 49ba 1844 | 014d b201 | 0000 4c89 | 9360 0100 | 0048 8383 | 6801 0000 | 0148 8bd6 | c5fa 1144 
+  0x000001b2367cac04: ;   {optimized virtual_call}
+  0x000001b2367cac04: 247c 90e8 
+
+  0x000001b2367cac08: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@12 (line 113)
+  0x000001b2367cac08: b4d9 9e07 
+
+  0x000001b2367cac0c: ;   {other}
+  0x000001b2367cac0c: 0f1f 8400 | 7c06 0002 | c5fa 104c | 247c c5f8 | 2ec8 baff | ffff ff0f | 8a14 0000 | 000f 820e 
+  0x000001b2367cac2c: 0000 00ba | 0000 0000 | 0f84 0300 | 0000 48ff 
+
+  0x000001b2367cac3c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cac3c: c285 d248 | ba30 5f4d | 8db2 0100 | 0048 c7c6 | 8801 0000 | 7c07 48c7 | c698 0100 | 0048 8b3c 
+  0x000001b2367cac5c: 3248 8d7f | 0148 893c | 320f 8c6f | 0300 0048 | 8b44 2450 
+
+  0x000001b2367cac70: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cac70: 48be 305f | 4d8d b201 
+
+  0x000001b2367cac78: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cac78: 0000 49ba | 88a7 004d | b201 0000 | 4c89 96b0 | 0100 0048 | 8386 b801 | 0000 0148 | 8b54 2450 
+  0x000001b2367cac98: 0f1f 8000 
+
+  0x000001b2367cac9c: ;   {optimized virtual_call}
+  0x000001b2367cac9c: 0000 00e8 
+
+  0x000001b2367caca0: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@20 (line 113)
+  0x000001b2367caca0: 1ce0 9e07 
+
+  0x000001b2367caca4: ;   {other}
+  0x000001b2367caca4: 0f1f 8400 | 1407 0003 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cacb4: ; implicit exception: dispatches to 0x000001b2367cbda5
+  0x000001b2367cacb4: 483b 0648 
+
+  0x000001b2367cacb8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cacb8: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cacc4: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cacc4: 49ba 1844 | 014d b201 | 0000 4c89 | 93e0 0100 | 0048 8383 | e801 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367cace4: 2480 0000 | 0066 0f1f 
+
+  0x000001b2367cacec: ;   {optimized virtual_call}
+  0x000001b2367cacec: 4400 00e8 
+
+  0x000001b2367cacf0: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@27 (line 113)
+  0x000001b2367cacf0: ccd8 9e07 
+
+  0x000001b2367cacf4: ;   {other}
+  0x000001b2367cacf4: 0f1f 8400 | 6407 0004 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cad04: ; implicit exception: dispatches to 0x000001b2367cbdaa
+  0x000001b2367cad04: 483b 0648 
+
+  0x000001b2367cad08: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cad08: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cad14: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cad14: 49ba 1844 | 014d b201 | 0000 4c89 | 9310 0200 | 0048 8383 | 1802 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367cad34: 2484 0000 | 0066 0f1f 
+
+  0x000001b2367cad3c: ;   {optimized virtual_call}
+  0x000001b2367cad3c: 4400 00e8 
+
+  0x000001b2367cad40: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@34 (line 113)
+  0x000001b2367cad40: 7cf2 9e07 
+
+  0x000001b2367cad44: ;   {other}
+  0x000001b2367cad44: 0f1f 8400 | b407 0005 | c5fa 108c | 2484 0000 | 00c5 f258 | c8c5 fa10 | 8424 8000 | 0000 c5f8 
+  0x000001b2367cad64: 2ec1 ba01 | 0000 000f | 8a13 0000 | 000f 870d | 0000 00ba | 0000 0000 | 0f84 0200 | 0000 ffca 
+  0x000001b2367cad84: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cad84: 85d2 48ba | 305f 4d8d | b201 0000 | 48c7 c638 | 0200 007f | 0748 c7c6 | 4802 0000 | 488b 3c32 
+  0x000001b2367cada4: 488d 7f01 | 4889 3c32 | 0f8f 2802 | 0000 488b 
+
+  0x000001b2367cadb4: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cadb4: 4424 5048 | be30 5f4d | 8db2 0100 
+
+  0x000001b2367cadc0: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cadc0: 0049 ba88 | a700 4db2 | 0100 004c | 8996 6002 | 0000 4883 | 8668 0200 | 0001 488b 
+
+  0x000001b2367caddc: ;   {optimized virtual_call}
+  0x000001b2367caddc: 5424 50e8 
+
+  0x000001b2367cade0: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@43 (line 114)
+  0x000001b2367cade0: 5c2e 9f07 
+
+  0x000001b2367cade4: ;   {other}
+  0x000001b2367cade4: 0f1f 8400 | 5408 0006 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cadf4: ; implicit exception: dispatches to 0x000001b2367cbdaf
+  0x000001b2367cadf4: 483b 0648 
+
+  0x000001b2367cadf8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cadf8: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cae04: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cae04: 49ba 1844 | 014d b201 | 0000 4c89 | 9390 0200 | 0048 8383 | 9802 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367cae24: 2488 0000 | 0066 0f1f 
+
+  0x000001b2367cae2c: ;   {optimized virtual_call}
+  0x000001b2367cae2c: 4400 00e8 
+
+  0x000001b2367cae30: ; ImmutableOopMap {[72]=Oop [80]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@50 (line 114)
+  0x000001b2367cae30: 8ced 9e07 
+
+  0x000001b2367cae34: ;   {other}
+  0x000001b2367cae34: 0f1f 8400 | a408 0007 | c5fa 108c | 2488 0000 | 00c5 f82e | c8ba ffff | ffff 0f8a | 1400 0000 
+  0x000001b2367cae54: 0f82 0e00 | 0000 ba00 | 0000 000f | 8403 0000 | 0048 ffc2 
+
+  0x000001b2367cae68: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cae68: 85d2 48ba | 305f 4d8d | b201 0000 | 48c7 c6b8 | 0200 007c | 0748 c7c6 | c802 0000 | 488b 3c32 
+  0x000001b2367cae88: 488d 7f01 | 4889 3c32 | 0f8c 4401 | 0000 488b | 4424 5048 
+
+  0x000001b2367cae9c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cae9c: 8bf0 48bf | 305f 4d8d | b201 0000 
+
+  0x000001b2367caea8: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367caea8: 49ba 88a7 | 004d b201 | 0000 4c89 | 97e0 0200 | 0048 8387 | e802 0000 | 0148 8bd0 
+
+  0x000001b2367caec4: ;   {optimized virtual_call}
+  0x000001b2367caec4: 6666 90e8 
+
+  0x000001b2367caec8: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@58 (line 114)
+  0x000001b2367caec8: 742d 9f07 
+
+  0x000001b2367caecc: ;   {other}
+  0x000001b2367caecc: 0f1f 8400 | 3c09 0008 | 488b 5424 | 488b 721c 
+
+  0x000001b2367caedc: ; implicit exception: dispatches to 0x000001b2367cbdb4
+  0x000001b2367caedc: 483b 0648 
+
+  0x000001b2367caee0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367caee0: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367caeec: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367caeec: 49ba 1844 | 014d b201 | 0000 4c89 | 9310 0300 | 0048 8383 | 1803 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367caf0c: 248c 0000 | 0066 0f1f 
+
+  0x000001b2367caf14: ;   {optimized virtual_call}
+  0x000001b2367caf14: 4400 00e8 
+
+  0x000001b2367caf18: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@65 (line 114)
+  0x000001b2367caf18: a4ec 9e07 
+
+  0x000001b2367caf1c: ;   {other}
+  0x000001b2367caf1c: 0f1f 8400 | 8c09 0009 | 488b 5424 | 488b 721c 
+
+  0x000001b2367caf2c: ; implicit exception: dispatches to 0x000001b2367cbdb9
+  0x000001b2367caf2c: 483b 0648 
+
+  0x000001b2367caf30: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367caf30: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367caf3c: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367caf3c: 49ba 1844 | 014d b201 | 0000 4c89 | 9340 0300 | 0048 8383 | 4803 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367caf5c: 2490 0000 | 0066 0f1f 
+
+  0x000001b2367caf64: ;   {optimized virtual_call}
+  0x000001b2367caf64: 4400 00e8 
+
+  0x000001b2367caf68: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@72 (line 114)
+  0x000001b2367caf68: d4fc 9e07 
+
+  0x000001b2367caf6c: ;   {other}
+  0x000001b2367caf6c: 0f1f 8400 | dc09 000a | c5fa 108c | 2490 0000 | 00c5 f258 | c8c5 fa10 | 8424 8c00 | 0000 c5f8 
+  0x000001b2367caf8c: 2ec1 ba01 | 0000 000f | 8a13 0000 | 000f 870d | 0000 00ba | 0000 0000 | 0f84 0200 | 0000 ffca 
+  0x000001b2367cafac: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cafac: 85d2 48ba | 305f 4d8d | b201 0000 | 48c7 c678 | 0300 007e | 0748 c7c6 | 6803 0000 | 488b 3c32 
+  0x000001b2367cafcc: 488d 7f01 | 4889 3c32 | 0f8e 0a00 | 0000 be00 | 0000 00e9 | 1500 0000 
+
+  0x000001b2367cafe4: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cafe4: 48ba 305f | 4d8d b201 | 0000 ff82 | 8803 0000 | be01 0000 | 0089 7424 
+
+  0x000001b2367caffc: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367caffc: 5848 bf30 | 5f4d 8db2 | 0100 0048 | 8387 a003 | 0000 01ba | 0000 0000 
+
+  0x000001b2367cb014: ;   {static_call}
+  0x000001b2367cb014: 6666 90e8 
+
+  0x000001b2367cb018: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic IsMouseButtonDown {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@87 (line 115)
+  0x000001b2367cb018: a4e7 9e07 
+
+  0x000001b2367cb01c: ;   {other}
+  0x000001b2367cb01c: 0f1f 8400 | 8c0a 000b | 488b 5424 | 48c5 fa10 
+
+  0x000001b2367cb02c: ;   {section_word}
+  0x000001b2367cb02c: 420c c5fa | 100d 8afa | ffff c5f8 | 2ec1 beff | ffff ff0f | 8a14 0000 | 000f 820e | 0000 00be 
+  0x000001b2367cb04c: 0000 0000 | 0f84 0300 | 0000 48ff 
+
+  0x000001b2367cb058: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb058: c685 f648 | be30 5f4d | 8db2 0100 | 0048 c7c7 | c003 0000 | 7f07 48c7 | c7b0 0300 | 0048 8b0c 
+  0x000001b2367cb078: 3e48 8d49 | 0148 890c | 3e0f 8f09 | 0000 0089 | 4424 5ce9 | c403 0000 | 8b72 2c48 
+
+  0x000001b2367cb094: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb094: 85f6 48be | 305f 4d8d | b201 0000 | 48c7 c7d0 | 0300 0074 | 0748 c7c7 | e003 0000 | 488b 0c3e 
+  0x000001b2367cb0b4: 488d 4901 | 4889 0c3e | 8944 245c | 0f84 8e03 
+
+  0x000001b2367cb0c4: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb0c4: 0000 48ba | 1844 014d | b201 0000 | 498b 87b8 | 0100 0048 | 8d78 3049 | 3bbf c801 | 0000 0f87 
+  0x000001b2367cb0e4: d60c 0000 | 4989 bfb8 | 0100 0048 | c700 0100 | 0000 488b | ca49 ba00 | 0000 4cb2 | 0100 0049 
+  0x000001b2367cb104: 2bca 8948 | 0848 33c9 | 8948 0c48 | 33c9 4889 | 4810 4889 | 4818 4889 | 4820 4889 | 4828 4c8b 
+  0x000001b2367cb124: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb124: c048 ba30 | 5f4d 8db2 | 0100 0048 | 8382 f003 
+
+  0x000001b2367cb134: ;   {metadata(method data for {method} {0x000001b28d4c5a20} '<init>' '()V' in 'com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb134: 0000 0149 | b8d0 554d | 8db2 0100 | 0041 8b90 | cc00 0000 | 83c2 0241 | 8990 cc00 | 0000 81e2 
+  0x000001b2367cb154: feff 1f00 | 85d2 0f84 | 6b0c 0000 
+
+  0x000001b2367cb160: ;   {metadata(method data for {method} {0x000001b28d4c5a20} '<init>' '()V' in 'com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb160: 4c8b c048 | bad0 554d | 8db2 0100 | 0048 8382 | 4801 0000 
+
+  0x000001b2367cb174: ;   {oop(nullptr)}
+  0x000001b2367cb174: 0149 b800 | 0000 0000 | 0000 0048 | 8bd0 4889 
+
+  0x000001b2367cb184: ;   {optimized virtual_call}
+  0x000001b2367cb184: 4424 60e8 
+
+  0x000001b2367cb188: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.raylib.Raylib$Rectangle::<init>@5 (line 329)
+                      ; - main.Button::draw@111 (line 118)
+  0x000001b2367cb188: d4c4 ffff 
+
+  0x000001b2367cb18c: ;   {other}
+  0x000001b2367cb18c: 0f1f 8400 | fc0b 000c | 488b 4424 
+
+  0x000001b2367cb198: ;   {metadata(method data for {method} {0x000001b28d4c5a20} '<init>' '()V' in 'com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb198: 6048 bad0 | 554d 8db2 | 0100 0048 | 8382 5801 | 0000 0148 | 8b54 2460 | 0f1f 8000 
+
+  0x000001b2367cb1b4: ;   {optimized virtual_call}
+  0x000001b2367cb1b4: 0000 00e8 
+
+  0x000001b2367cb1b8: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokespecial allocate {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.raylib.Raylib$Rectangle::<init>@9 (line 329)
+                      ; - main.Button::draw@111 (line 118)
+  0x000001b2367cb1b8: 84fe 9e07 
+
+  0x000001b2367cb1bc: ;   {other}
+  0x000001b2367cb1bc: 0f1f 8400 | 2c0c 000d | 488b 5424 | 488b 721c 
+
+  0x000001b2367cb1cc: ; implicit exception: dispatches to 0x000001b2367cbdec
+  0x000001b2367cb1cc: 483b 0648 
+
+  0x000001b2367cb1d0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb1d0: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cb1dc: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb1dc: 49ba 1844 | 014d b201 | 0000 4c89 | 9308 0400 | 0048 8383 | 1004 0000 | 0148 8bd6 | 0f1f 8000 
+  0x000001b2367cb1fc: ;   {optimized virtual_call}
+  0x000001b2367cb1fc: 0000 00e8 
+
+  0x000001b2367cb200: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@122 (line 119)
+  0x000001b2367cb200: bcd3 9e07 
+
+  0x000001b2367cb204: ;   {other}
+  0x000001b2367cb204: 0f1f 8400 | 740c 000e | 488b 5424 | 48c5 fa10 | 4a0c 488b 
+
+  0x000001b2367cb218: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb218: 4424 6048 | be30 5f4d | 8db2 0100 
+
+  0x000001b2367cb224: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb224: 0049 ba18 | 4401 4db2 | 0100 004c | 8996 3804 | 0000 4883 | 8640 0400 | 0001 c5fa | 5cc1 488b 
+  0x000001b2367cb244: ;   {optimized virtual_call}
+  0x000001b2367cb244: 5424 60e8 
+
+  0x000001b2367cb248: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@130 (line 119)
+  0x000001b2367cb248: f401 9f07 
+
+  0x000001b2367cb24c: ;   {other}
+  0x000001b2367cb24c: 0f1f 8400 | bc0c 000f | 488b 5424 | 488b 721c 
+
+  0x000001b2367cb25c: ; implicit exception: dispatches to 0x000001b2367cbdf1
+  0x000001b2367cb25c: 483b 0648 
+
+  0x000001b2367cb260: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb260: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cb26c: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb26c: 49ba 1844 | 014d b201 | 0000 4c89 | 9368 0400 | 0048 8383 | 7004 0000 | 0148 8bd6 | 0f1f 8000 
+  0x000001b2367cb28c: ;   {optimized virtual_call}
+  0x000001b2367cb28c: 0000 00e8 
+
+  0x000001b2367cb290: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@140 (line 120)
+  0x000001b2367cb290: 2ce9 9e07 
+
+  0x000001b2367cb294: ;   {other}
+  0x000001b2367cb294: 0f1f 8400 | 040d 0010 | 488b 5424 | 48c5 fa10 | 4a0c 488b 
+
+  0x000001b2367cb2a8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb2a8: 4424 6048 | be30 5f4d | 8db2 0100 
+
+  0x000001b2367cb2b4: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb2b4: 0049 ba18 | 4401 4db2 | 0100 004c | 8996 9804 | 0000 4883 | 86a0 0400 | 0001 c5fa | 5cc1 488b 
+  0x000001b2367cb2d4: ;   {optimized virtual_call}
+  0x000001b2367cb2d4: 5424 60e8 
+
+  0x000001b2367cb2d8: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@148 (line 120)
+  0x000001b2367cb2d8: 6408 9f07 
+
+  0x000001b2367cb2dc: ;   {other}
+  0x000001b2367cb2dc: 0f1f 8400 | 4c0d 0011 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cb2ec: ; implicit exception: dispatches to 0x000001b2367cbdf6
+  0x000001b2367cb2ec: 483b 0648 
+
+  0x000001b2367cb2f0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb2f0: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cb2fc: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb2fc: 49ba 1844 | 014d b201 | 0000 4c89 | 93c8 0400 | 0048 8383 | d004 0000 | 0148 8bd6 | 0f1f 8000 
+  0x000001b2367cb31c: ;   {optimized virtual_call}
+  0x000001b2367cb31c: 0000 00e8 
+
+  0x000001b2367cb320: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@158 (line 121)
+  0x000001b2367cb320: 9cec 9e07 
+
+  0x000001b2367cb324: ;   {other}
+  0x000001b2367cb324: 0f1f 8400 | 940d 0012 | 488b 5424 | 48c5 fa10 | 4a0c 488b 
+
+  0x000001b2367cb338: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb338: 4424 6048 | be30 5f4d | 8db2 0100 
+
+  0x000001b2367cb344: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb344: 0049 ba18 | 4401 4db2 | 0100 004c | 8996 f804 | 0000 4883 | 8600 0500 
+
+  0x000001b2367cb35c: ;   {section_word}
+  0x000001b2367cb35c: 0001 c5f2 | 590d 5ef7 | ffff c5fa | 58c1 488b 
+
+  0x000001b2367cb36c: ;   {optimized virtual_call}
+  0x000001b2367cb36c: 5424 60e8 
+
+  0x000001b2367cb370: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@168 (line 121)
+  0x000001b2367cb370: cc0e 9f07 
+
+  0x000001b2367cb374: ;   {other}
+  0x000001b2367cb374: 0f1f 8400 | e40d 0013 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cb384: ; implicit exception: dispatches to 0x000001b2367cbdfb
+  0x000001b2367cb384: 483b 0648 
+
+  0x000001b2367cb388: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb388: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cb394: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb394: 49ba 1844 | 014d b201 | 0000 4c89 | 9328 0500 | 0048 8383 | 3005 0000 | 0148 8bd6 | 0f1f 8000 
+  0x000001b2367cb3b4: ;   {optimized virtual_call}
+  0x000001b2367cb3b4: 0000 00e8 
+
+  0x000001b2367cb3b8: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@178 (line 122)
+  0x000001b2367cb3b8: 84f8 9e07 
+
+  0x000001b2367cb3bc: ;   {other}
+  0x000001b2367cb3bc: 0f1f 8400 | 2c0e 0014 | 488b 5424 | 48c5 fa10 | 4a0c 488b 
+
+  0x000001b2367cb3d0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb3d0: 4424 6048 | be30 5f4d | 8db2 0100 
+
+  0x000001b2367cb3dc: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb3dc: 0049 ba18 | 4401 4db2 | 0100 004c | 8996 5805 | 0000 4883 | 8660 0500 
+
+  0x000001b2367cb3f4: ;   {section_word}
+  0x000001b2367cb3f4: 0001 c5f2 | 590d caf6 | ffff c5fa | 58c1 488b 
+
+  0x000001b2367cb404: ;   {optimized virtual_call}
+  0x000001b2367cb404: 5424 60e8 
+
+  0x000001b2367cb408: ; ImmutableOopMap {[72]=Oop [96]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@188 (line 122)
+  0x000001b2367cb408: 3415 9f07 
+
+  0x000001b2367cb40c: ;   {other}
+  0x000001b2367cb40c: 0f1f 8400 | 7c0e 0015 | 488b 5424 | 4844 8b4a 
+
+  0x000001b2367cb41c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb41c: 2c49 b830 | 5f4d 8db2 | 0100 0049 | 8380 8005 | 0000 0148 | 8b54 2460 
+
+  0x000001b2367cb434: ;   {section_word}
+  0x000001b2367cb434: c5fa 1005 | 90f6 ffff | 41b8 0a00 | 0000 0f1f 
+
+  0x000001b2367cb444: ;   {static_call}
+  0x000001b2367cb444: 4400 00e8 
+
+  0x000001b2367cb448: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic DrawRectangleRounded {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@202 (line 123)
+  0x000001b2367cb448: 74f3 9e07 
+
+  0x000001b2367cb44c: ;   {other}
+  0x000001b2367cb44c: 0f1f 8400 | bc0e 0016 | 8b74 2458 
+
+  0x000001b2367cb458: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb458: 85f6 48ba | 305f 4d8d | b201 0000 | 49c7 c090 | 0500 0074 | 0749 c7c0 | a005 0000 | 4e8b 0c02 
+  0x000001b2367cb478: 4d8d 4901 | 4e89 0c02 | 0f84 3200 | 0000 8b44 | 245c 85c0 
+
+  0x000001b2367cb48c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb48c: 48ba 305f | 4d8d b201 | 0000 49c7 | c0c0 0500 | 0075 0749 | c7c0 b005 | 0000 4e8b | 0c02 4d8d 
+  0x000001b2367cb4ac: 4901 4e89 | 0c02 0f85 | f900 0000 
+
+  0x000001b2367cb4b8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb4b8: 85f6 48ba | 305f 4d8d | b201 0000 | 49c7 c0f8 | 0500 0074 | 0749 c7c0 | 0806 0000 | 4e8b 0c02 
+  0x000001b2367cb4d8: 4d8d 4901 | 4e89 0c02 | 488b 5424 | 480f 8434 | 0000 0044 | 0fbe 421a 
+
+  0x000001b2367cb4f0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb4f0: 4585 c049 | b830 5f4d | 8db2 0100 | 0049 c7c1 | 2806 0000 | 7507 49c7 | c118 0600 | 004b 8b34 
+  0x000001b2367cb510: 0848 8d76 | 014b 8934 | 080f 8542 | 0000 0044 | 8b42 1c44 
+
+  0x000001b2367cb524: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb524: 8b4a 2048 | be30 5f4d | 8db2 0100 | 0048 8386 | 6006 0000 | 0149 8bd0 
+
+  0x000001b2367cb53c: ;   {section_word}
+  0x000001b2367cb53c: c5fa 1005 | 8cf5 ffff | 41b8 0a00 | 0000 0f1f 
+
+  0x000001b2367cb54c: ;   {static_call}
+  0x000001b2367cb54c: 4400 00e8 
+
+  0x000001b2367cb550: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic DrawRectangleRounded {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@272 (line 130)
+  0x000001b2367cb550: 6cf2 9e07 
+
+  0x000001b2367cb554: ;   {other}
+  0x000001b2367cb554: 0f1f 8400 | c40f 0017 | e9a3 0000 | 0044 8b42 | 1c44 8b4a 
+
+  0x000001b2367cb568: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb568: 2448 be30 | 5f4d 8db2 | 0100 0048 | 8386 3806 | 0000 0149 
+
+  0x000001b2367cb57c: ;   {section_word}
+  0x000001b2367cb57c: 8bd0 c5fa | 1005 4ef5 | ffff 41b8 | 0a00 0000 
+
+  0x000001b2367cb58c: ;   {static_call}
+  0x000001b2367cb58c: 6666 90e8 
+
+  0x000001b2367cb590: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic DrawRectangleRounded {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@254 (line 128)
+  0x000001b2367cb590: 2cf2 9e07 
+
+  0x000001b2367cb594: ;   {other}
+  0x000001b2367cb594: 0f1f 8400 | 0410 0018 
+
+  0x000001b2367cb59c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb59c: 48ba 305f | 4d8d b201 | 0000 ff82 | 4806 0000 | e953 0000 | 0048 8b54 | 2448 448b | 421c 448b 
+  0x000001b2367cb5bc: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb5bc: 4a28 48be | 305f 4d8d | b201 0000 | 4883 86d0 | 0500 0001 
+
+  0x000001b2367cb5d0: ;   {section_word}
+  0x000001b2367cb5d0: 498b d0c5 | fa10 05fd | f4ff ff41 | b80a 0000 | 0066 0f1f 
+
+  0x000001b2367cb5e4: ;   {static_call}
+  0x000001b2367cb5e4: 4400 00e8 
+
+  0x000001b2367cb5e8: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic DrawRectangleRounded {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@225 (line 126)
+  0x000001b2367cb5e8: d4f1 9e07 
+
+  0x000001b2367cb5ec: ;   {other}
+  0x000001b2367cb5ec: 0f1f 8400 | 5c10 0019 
+
+  0x000001b2367cb5f4: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb5f4: 48ba 305f | 4d8d b201 | 0000 ff82 | e005 0000 | 488b 5424 | 488b 7230 
+
+  0x000001b2367cb60c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb60c: 4885 f648 | be30 5f4d | 8db2 0100 | 0048 c7c7 | 7006 0000 | 7407 48c7 | c780 0600 | 0048 8b1c 
+  0x000001b2367cb62c: 3e48 8d5b | 0148 891c | 3e0f 84de | 0400 008b | 721c 483b | 0648 8bfe 
+
+  0x000001b2367cb644: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb644: 48bb 305f | 4d8d b201 
+
+  0x000001b2367cb64c: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb64c: 0000 49ba | 1844 014d | b201 0000 | 4c89 9398 | 0600 0048 | 8383 a006 | 0000 0148 | 8bd6 0f1f 
+  0x000001b2367cb66c: ;   {optimized virtual_call}
+  0x000001b2367cb66c: 4400 00e8 
+
+  0x000001b2367cb670: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@286 (line 134)
+  0x000001b2367cb670: 4ce9 9e07 
+
+  0x000001b2367cb674: ;   {other}
+  0x000001b2367cb674: 0f1f 8400 | e410 001a | c5fa 1184 | 2494 0000 | 0048 8b54 | 2448 8b72 | 1c48 3b06 
+
+  0x000001b2367cb690: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb690: 488b fe48 | bb30 5f4d | 8db2 0100 
+
+  0x000001b2367cb69c: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb69c: 0049 ba18 | 4401 4db2 | 0100 004c | 8993 c806 | 0000 4883 | 83d0 0600 | 0001 488b | d666 0f1f 
+  0x000001b2367cb6bc: ;   {optimized virtual_call}
+  0x000001b2367cb6bc: 4400 00e8 
+
+  0x000001b2367cb6c0: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@295 (line 135)
+  0x000001b2367cb6c0: 7cf5 9e07 
+
+  0x000001b2367cb6c4: ;   {other}
+  0x000001b2367cb6c4: 0f1f 8400 | 3411 001b | c5fa 1184 | 2498 0000 | 0048 8b54 | 2448 8b72 | 3048 3b06 
+
+  0x000001b2367cb6e0: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb6e0: 488b fe48 | bb30 5f4d | 8db2 0100 
+
+  0x000001b2367cb6ec: ;   {metadata('com/raylib/Raylib$Texture')}
+  0x000001b2367cb6ec: 0049 ba58 | 3601 4db2 | 0100 004c | 8993 f806 | 0000 4883 | 8300 0700 | 0001 488b | d666 0f1f 
+  0x000001b2367cb70c: ;   {optimized virtual_call}
+  0x000001b2367cb70c: 4400 00e8 
+
+  0x000001b2367cb710: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@304 (line 136)
+  0x000001b2367cb710: 2c1d 9f07 
+
+  0x000001b2367cb714: ;   {other}
+  0x000001b2367cb714: 0f1f 8400 | 8411 001c | c5fa 2ac0 | c5fa 1184 | 249c 0000 | 0048 8b54 | 2448 8b72 | 3048 3b06 
+  0x000001b2367cb734: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb734: 488b fe48 | bb30 5f4d | 8db2 0100 
+
+  0x000001b2367cb740: ;   {metadata('com/raylib/Raylib$Texture')}
+  0x000001b2367cb740: 0049 ba58 | 3601 4db2 | 0100 004c | 8993 2807 | 0000 4883 | 8330 0700 | 0001 488b 
+
+  0x000001b2367cb75c: ;   {optimized virtual_call}
+  0x000001b2367cb75c: d666 90e8 
+
+  0x000001b2367cb760: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@314 (line 137)
+  0x000001b2367cb760: dc20 9f07 
+
+  0x000001b2367cb764: ;   {other}
+  0x000001b2367cb764: 0f1f 8400 | d411 001d | c5ea 2ad0 
+
+  0x000001b2367cb770: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb770: 48be 305f | 4d8d b201 | 0000 4883 | 8650 0700 | 0001 c5fa | 1084 2494 | 0000 00c5 | fa10 9c24 
+  0x000001b2367cb790: 9c00 0000 | c5fa 5ec3 | c5fa 108c | 2498 0000 | 00c5 f25e | cac5 fa11 | 9424 a000 
+
+  0x000001b2367cb7ac: ;   {static_call}
+  0x000001b2367cb7ac: 0000 90e8 
+
+  0x000001b2367cb7b0: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic min {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@330 (line 139)
+  0x000001b2367cb7b0: ccd1 ffff 
+
+  0x000001b2367cb7b4: ;   {other}
+  0x000001b2367cb7b4: 0f1f 8400 | 2412 001e | 488b 5424 | 48c5 fa10 | 4a10 c5f2 | 59c8 c5f8 | 2ec8 beff | ffff ff0f 
+  0x000001b2367cb7d4: 8a14 0000 | 000f 820e | 0000 00be | 0000 0000 | 0f84 0300 | 0000 48ff 
+
+  0x000001b2367cb7ec: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb7ec: c685 f648 | be30 5f4d | 8db2 0100 | 0048 c7c7 | 6007 0000 | 7e07 48c7 | c770 0700 | 0048 8b1c 
+  0x000001b2367cb80c: 3e48 8d5b | 0148 891c | 3e0f 8e04 | 0000 00c5 | f828 c8c5 | fa10 9424 | a000 0000 | c5fa 1084 
+  0x000001b2367cb82c: 249c 0000 | 00c5 f828 | e9c5 d259 | e8c5 f828 | c1c5 fa59 | c28b 721c 
+
+  0x000001b2367cb844: ; implicit exception: dispatches to 0x000001b2367cbe14
+  0x000001b2367cb844: 483b 0648 
+
+  0x000001b2367cb848: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb848: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cb854: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb854: 49ba 1844 | 014d b201 | 0000 4c89 | 9388 0700 | 0048 8383 | 9007 0000 | 0148 8bd6 | c5fa 118c 
+  0x000001b2367cb874: 24ac 0000 | 00c5 fa11 | 8424 a800 | 0000 c5fa | 11ac 24a4 | 0000 000f 
+
+  0x000001b2367cb88c: ;   {optimized virtual_call}
+  0x000001b2367cb88c: 1f40 00e8 
+
+  0x000001b2367cb890: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@374 (line 146)
+  0x000001b2367cb890: 2ccd 9e07 
+
+  0x000001b2367cb894: ;   {other}
+  0x000001b2367cb894: 0f1f 8400 | 0413 001f | c5fa 108c | 2494 0000 | 00c5 f25c | 8c24 a400 
+
+  0x000001b2367cb8ac: ;   {section_word}
+  0x000001b2367cb8ac: 0000 c5f2 | 5e0d 26f2 | ffff c5fa | 58c1 488b | 5424 488b | 721c 483b | 0648 8bfe 
+
+  0x000001b2367cb8c8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb8c8: 48bb 305f | 4d8d b201 
+
+  0x000001b2367cb8d0: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cb8d0: 0000 49ba | 1844 014d | b201 0000 | 4c89 93b8 | 0700 0048 | 8383 c007 | 0000 0148 | 8bd6 c5fa 
+  0x000001b2367cb8f0: 1184 24b0 
+
+  0x000001b2367cb8f4: ;   {optimized virtual_call}
+  0x000001b2367cb8f4: 0000 00e8 
+
+  0x000001b2367cb8f8: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@391 (line 147)
+  0x000001b2367cb8f8: c4e2 9e07 
+
+  0x000001b2367cb8fc: ;   {other}
+  0x000001b2367cb8fc: 0f1f 8400 | 6c13 0020 | c5fa 108c | 2498 0000 | 00c5 f25c | 8c24 a800 
+
+  0x000001b2367cb914: ;   {section_word}
+  0x000001b2367cb914: 0000 c5f2 | 5e0d c2f1 | ffff c5fa | 58c1 488b | 5424 488b 
+
+  0x000001b2367cb928: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cb928: 5a30 48ba | 88a7 004d | b201 0000 | 498b 87b8 | 0100 0048 | 8d78 3049 | 3bbf c801 | 0000 0f87 
+  0x000001b2367cb948: d204 0000 | 4989 bfb8 | 0100 0048 | c700 0100 | 0000 488b | ca49 ba00 | 0000 4cb2 | 0100 0049 
+  0x000001b2367cb968: 2bca 8948 | 0848 33c9 | 8948 0c48 | 33c9 4889 | 4810 4889 | 4818 4889 | 4820 4889 | 4828 4c8b 
+  0x000001b2367cb988: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cb988: c048 ba30 | 5f4d 8db2 | 0100 0048 | 8382 e007 
+
+  0x000001b2367cb998: ;   {metadata(method data for {method} {0x000001b28d49c3d0} '<init>' '()V' in 'com/raylib/Raylib$Vector2')}
+  0x000001b2367cb998: 0000 0149 | b8d0 5b4d | 8db2 0100 | 0041 8b90 | cc00 0000 | 83c2 0241 | 8990 cc00 | 0000 81e2 
+  0x000001b2367cb9b8: feff 1f00 | 85d2 0f84 | 6704 0000 
+
+  0x000001b2367cb9c4: ;   {metadata(method data for {method} {0x000001b28d49c3d0} '<init>' '()V' in 'com/raylib/Raylib$Vector2')}
+  0x000001b2367cb9c4: 4c8b c048 | bad0 5b4d | 8db2 0100 | 0048 8382 | 4801 0000 
+
+  0x000001b2367cb9d8: ;   {oop(nullptr)}
+  0x000001b2367cb9d8: 0149 b800 | 0000 0000 | 0000 0048 | 8bd0 4889 | 5c24 7048 | 8944 2468 | c5fa 1184 | 24b4 0000 
+  0x000001b2367cb9f8: 0066 0f1f 
+
+  0x000001b2367cb9fc: ;   {optimized virtual_call}
+  0x000001b2367cb9fc: 4400 00e8 
+
+  0x000001b2367cba00: ; ImmutableOopMap {[72]=Oop [104]=Oop [112]=Oop }
+                      ;*invokespecial <init> {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.raylib.Raylib$Vector2::<init>@5 (line 198)
+                      ; - main.Button::draw@412 (line 148)
+  0x000001b2367cba00: 5cbc ffff 
+
+  0x000001b2367cba04: ;   {other}
+  0x000001b2367cba04: 0f1f 8400 | 7414 0021 | 488b 4424 
+
+  0x000001b2367cba10: ;   {metadata(method data for {method} {0x000001b28d49c3d0} '<init>' '()V' in 'com/raylib/Raylib$Vector2')}
+  0x000001b2367cba10: 6848 bad0 | 5b4d 8db2 | 0100 0048 | 8382 5801 | 0000 0148 | 8b54 2468 | 0f1f 8000 
+
+  0x000001b2367cba2c: ;   {optimized virtual_call}
+  0x000001b2367cba2c: 0000 00e8 
+
+  0x000001b2367cba30: ; ImmutableOopMap {[72]=Oop [104]=Oop [112]=Oop }
+                      ;*invokespecial allocate {reexecute=0 rethrow=0 return_oop=0}
+                      ; - com.raylib.Raylib$Vector2::<init>@9 (line 198)
+                      ; - main.Button::draw@412 (line 148)
+  0x000001b2367cba30: 0c2e 9f07 
+
+  0x000001b2367cba34: ;   {other}
+  0x000001b2367cba34: 0f1f 8400 | a414 0022 | 488b 4424 
+
+  0x000001b2367cba40: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cba40: 6848 ba30 | 5f4d 8db2 
+
+  0x000001b2367cba48: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cba48: 0100 0049 | ba88 a700 | 4db2 0100 | 004c 8992 | f807 0000 | 4883 8200 | 0800 0001 | c5fa 1084 
+  0x000001b2367cba68: 24b0 0000 | 0048 8b54 | 2468 0f1f 
+
+  0x000001b2367cba74: ;   {optimized virtual_call}
+  0x000001b2367cba74: 4400 00e8 
+
+  0x000001b2367cba78: ; ImmutableOopMap {[72]=Oop [112]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@417 (line 148)
+  0x000001b2367cba78: c431 9f07 
+
+  0x000001b2367cba7c: ;   {other}
+  0x000001b2367cba7c: 0f1f 8400 | ec14 0023 
+
+  0x000001b2367cba84: ; implicit exception: dispatches to 0x000001b2367cbe4c
+  0x000001b2367cba84: 483b 0048 
+
+  0x000001b2367cba88: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cba88: 8bd0 48be | 305f 4d8d | b201 0000 
+
+  0x000001b2367cba94: ;   {metadata('com/raylib/Raylib$Vector2')}
+  0x000001b2367cba94: 49ba 88a7 | 004d b201 | 0000 4c89 | 9628 0800 | 0048 8386 | 3008 0000 | 01c5 fa10 | 8424 b400 
+  0x000001b2367cbab4: 0000 488b | d066 0f1f 
+
+  0x000001b2367cbabc: ;   {optimized virtual_call}
+  0x000001b2367cbabc: 4400 00e8 
+
+  0x000001b2367cbac0: ; ImmutableOopMap {[72]=Oop [112]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@422 (line 148)
+  0x000001b2367cbac0: 7c38 9f07 
+
+  0x000001b2367cbac4: ;   {other}
+  0x000001b2367cbac4: 0f1f 8400 | 3415 0024 
+
+  0x000001b2367cbacc: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbacc: 48ba 305f | 4d8d b201 | 0000 4883 | 8250 0800 | 0001 488b | 5424 704c 
+
+  0x000001b2367cbae4: ;   {section_word}
+  0x000001b2367cbae4: 8bc0 c5fa | 1005 f6ef | ffff c5fa | 108c 24ac 
+
+  0x000001b2367cbaf4: ;   {oop(a 'com/raylib/Raylib$Color'{0x000000008ad3d9b8})}
+  0x000001b2367cbaf4: 0000 0049 | b9b8 d9d3 | 8a00 0000 | 0066 0f1f 
+
+  0x000001b2367cbb04: ;   {static_call}
+  0x000001b2367cbb04: 4400 00e8 
+
+  0x000001b2367cbb08: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic DrawTextureEx {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@431 (line 148)
+  0x000001b2367cbb08: 343f 9f07 
+
+  0x000001b2367cbb0c: ;   {other}
+  0x000001b2367cbb0c: 0f1f 8400 | 7c15 0025 | 488b 5424 | 4844 8b42 | 344d 85c0 
+
+  0x000001b2367cbb20: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbb20: 48be 305f | 4d8d b201 | 0000 48c7 | c760 0800 | 0074 0748 | c7c7 7008 | 0000 488b | 1c3e 488d 
+  0x000001b2367cbb40: 5b01 4889 | 1c3e 0f84 | 1802 0000 
+
+  0x000001b2367cbb4c: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbb4c: 8b72 1448 | bf30 5f4d | 8db2 0100 | 0048 8387 | 8008 0000 | 0149 8bd0 
+
+  0x000001b2367cbb64: ;   {static_call}
+  0x000001b2367cbb64: 4c8b c6e8 
+
+  0x000001b2367cbb68: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokestatic MeasureText {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@449 (line 153)
+  0x000001b2367cbb68: d4d0 9f07 
+
+  0x000001b2367cbb6c: ;   {other}
+  0x000001b2367cbb6c: 0f1f 8400 | dc15 0026 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cbb7c: ; implicit exception: dispatches to 0x000001b2367cbe51
+  0x000001b2367cbb7c: 483b 0648 
+
+  0x000001b2367cbb80: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbb80: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cbb8c: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cbb8c: 49ba 1844 | 014d b201 | 0000 4c89 | 9398 0800 | 0048 8383 | a008 0000 | 0148 8bd6 | 8944 2478 
+  0x000001b2367cbbac: ;   {optimized virtual_call}
+  0x000001b2367cbbac: 6666 90e8 
+
+  0x000001b2367cbbb0: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@458 (line 154)
+  0x000001b2367cbbb0: 0cca 9e07 
+
+  0x000001b2367cbbb4: ;   {other}
+  0x000001b2367cbbb4: 0f1f 8400 | 2416 0027 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cbbc4: ; implicit exception: dispatches to 0x000001b2367cbe56
+  0x000001b2367cbbc4: 483b 0648 
+
+  0x000001b2367cbbc8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbbc8: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cbbd4: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cbbd4: 49ba 1844 | 014d b201 | 0000 4c89 | 93c8 0800 | 0048 8383 | d008 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367cbbf4: 24b8 0000 | 0066 0f1f 
+
+  0x000001b2367cbbfc: ;   {optimized virtual_call}
+  0x000001b2367cbbfc: 4400 00e8 
+
+  0x000001b2367cbc00: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@465 (line 154)
+  0x000001b2367cbc00: bce3 9e07 
+
+  0x000001b2367cbc04: ;   {other}
+  0x000001b2367cbc04: 0f1f 8400 | 7416 0028 | 8b44 2478 | c5f2 2ac8 | c5fa 5cc1 
+
+  0x000001b2367cbc18: ;   {section_word}
+  0x000001b2367cbc18: c5fa 5e05 | c8ee ffff | c5fa 108c | 24b8 0000 | 00c5 f258 | c848 8b54 | 2448 8b72 | 1c48 3b06 
+  0x000001b2367cbc38: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbc38: 488b fe48 | bb30 5f4d | 8db2 0100 
+
+  0x000001b2367cbc44: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cbc44: 0049 ba18 | 4401 4db2 | 0100 004c | 8993 f808 | 0000 4883 | 8300 0900 | 0001 488b | d6c5 fa11 
+  0x000001b2367cbc64: 8c24 bc00 | 0000 0f1f 
+
+  0x000001b2367cbc6c: ;   {optimized virtual_call}
+  0x000001b2367cbc6c: 4400 00e8 
+
+  0x000001b2367cbc70: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@481 (line 155)
+  0x000001b2367cbc70: 4cdf 9e07 
+
+  0x000001b2367cbc74: ;   {other}
+  0x000001b2367cbc74: 0f1f 8400 | e416 0029 | 488b 5424 | 488b 721c 
+
+  0x000001b2367cbc84: ; implicit exception: dispatches to 0x000001b2367cbe60
+  0x000001b2367cbc84: 483b 0648 
+
+  0x000001b2367cbc88: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbc88: 8bfe 48bb | 305f 4d8d | b201 0000 
+
+  0x000001b2367cbc94: ;   {metadata('com/raylib/Raylib$Rectangle')}
+  0x000001b2367cbc94: 49ba 1844 | 014d b201 | 0000 4c89 | 9328 0900 | 0048 8383 | 3009 0000 | 0148 8bd6 | c5fa 1184 
+  0x000001b2367cbcb4: 24c0 0000 | 0066 0f1f 
+
+  0x000001b2367cbcbc: ;   {optimized virtual_call}
+  0x000001b2367cbcbc: 4400 00e8 
+
+  0x000001b2367cbcc0: ; ImmutableOopMap {[72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@488 (line 155)
+  0x000001b2367cbcc0: 7cef 9e07 
+
+  0x000001b2367cbcc4: ;   {other}
+  0x000001b2367cbcc4: 0f1f 8400 | 3417 002a | 488b 5424 | 488b 7a14 | c5f2 2acf | c5fa 5cc1 
+
+  0x000001b2367cbcdc: ;   {section_word}
+  0x000001b2367cbcdc: c5fa 5e05 | 08ee ffff | c5fa 108c | 24c0 0000 | 00c5 f258 | c844 8b42 | 348b 7238 
+
+  0x000001b2367cbcf8: ;   {metadata(method data for {method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbcf8: 48ba 305f | 4d8d b201 | 0000 4883 | 8250 0900 | 0001 c5fa | 1084 24bc | 0000 00c5 | 7a2c c841 
+  0x000001b2367cbd18: 81f9 0000 | 0080 7510 | 4883 ec08 | c5fa 1104 
+
+  0x000001b2367cbd28: ;   {runtime_call StubRoutines (initial stubs)}
+  0x000001b2367cbd28: 24e8 dc53 | 3e07 4159 | c5fa 2cd9 | 81fb 0000 | 0080 750f | 4883 ec08 | c5fa 110c 
+
+  0x000001b2367cbd44: ;   {runtime_call StubRoutines (initial stubs)}
+  0x000001b2367cbd44: 24e8 c053 | 3e07 5b49 | 8bd0 4d8b | c14c 8bcb 
+
+  0x000001b2367cbd54: ;   {static_call}
+  0x000001b2367cbd54: 6666 90e8 
+
+  0x000001b2367cbd58: ; ImmutableOopMap {}
+                      ;*invokestatic DrawText {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@520 (line 156)
+  0x000001b2367cbd58: 6445 9f07 
+
+  0x000001b2367cbd5c: ;   {other}
+  0x000001b2367cbd5c: 0f1f 8400 | cc17 002b | 4881 c4d0 | 0000 005d 
+
+  0x000001b2367cbd6c: ;   {poll_return}
+  0x000001b2367cbd6c: 493b a758 | 0400 000f | 87ec 0000 
+
+  0x000001b2367cbd78: ;   {metadata({method} {0x000001b28d4ce738} 'draw' '()V' in 'main/Button')}
+  0x000001b2367cbd78: 00c3 49ba | 30e7 4c8d | b201 0000 | 4c89 5424 | 0848 c704 | 24ff ffff 
+
+  0x000001b2367cbd90: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000001b2367cbd90: ffe8 ea1e 
+
+  0x000001b2367cbd94: ; ImmutableOopMap {rdx=Oop [72]=Oop }
+                      ;*synchronization entry
+                      ; - main.Button::draw@-1 (line 112)
+  0x000001b2367cbd94: 5107 e9d0 
+
+  0x000001b2367cbd98: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbd98: edff ffe8 
+
+  0x000001b2367cbd9c: ; ImmutableOopMap {rax=Oop [72]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@5 (line 113)
+  0x000001b2367cbd9c: 80a9 5007 
+
+  0x000001b2367cbda0: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbda0: e87b a950 
+
+  0x000001b2367cbda4: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@12 (line 113)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbda4: 07e8 76a9 
+
+  0x000001b2367cbda8: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [80]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@27 (line 113)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbda8: 5007 e871 
+
+  0x000001b2367cbdac: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [80]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@34 (line 113)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdac: a950 07e8 
+
+  0x000001b2367cbdb0: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [80]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@50 (line 114)
+  0x000001b2367cbdb0: 6ca9 5007 
+
+  0x000001b2367cbdb4: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdb4: e867 a950 
+
+  0x000001b2367cbdb8: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@65 (line 114)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdb8: 07e8 62a9 
+
+  0x000001b2367cbdbc: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@72 (line 114)
+  0x000001b2367cbdbc: 5007 488b 
+
+  0x000001b2367cbdc0: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x000001b2367cbdc0: d2e8 3ab4 
+
+  0x000001b2367cbdc4: ; ImmutableOopMap {[72]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@107 (line 118)
+  0x000001b2367cbdc4: 5007 e957 
+
+  0x000001b2367cbdc8: ;   {metadata({method} {0x000001b28d4c5a20} '<init>' '()V' in 'com/raylib/Raylib$Rectangle')}
+  0x000001b2367cbdc8: f3ff ff49 | ba18 5a4c | 8db2 0100 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x000001b2367cbde0: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000001b2367cbde0: ffff e899 
+
+  0x000001b2367cbde4: ; ImmutableOopMap {rax=Oop [72]=Oop }
+                      ;*synchronization entry
+                      ; - com.raylib.Raylib$Rectangle::<init>@-1 (line 329)
+                      ; - main.Button::draw@111 (line 118)
+  0x000001b2367cbde4: 1e51 07e9 | 74f3 ffff 
+
+  0x000001b2367cbdec: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdec: e82f a950 
+
+  0x000001b2367cbdf0: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [96]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@122 (line 119)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdf0: 07e8 2aa9 
+
+  0x000001b2367cbdf4: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [96]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@140 (line 120)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdf4: 5007 e825 
+
+  0x000001b2367cbdf8: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [96]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@158 (line 121)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbdf8: a950 07e8 
+
+  0x000001b2367cbdfc: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop [96]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@178 (line 122)
+  0x000001b2367cbdfc: 20a9 5007 
+
+  0x000001b2367cbe00: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe00: e81b a950 
+
+  0x000001b2367cbe04: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@286 (line 134)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe04: 07e8 16a9 
+
+  0x000001b2367cbe08: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@295 (line 135)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe08: 5007 e811 
+
+  0x000001b2367cbe0c: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@304 (line 136)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe0c: a950 07e8 
+
+  0x000001b2367cbe10: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@314 (line 137)
+  0x000001b2367cbe10: 0ca9 5007 
+
+  0x000001b2367cbe14: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe14: e807 a950 
+
+  0x000001b2367cbe18: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@374 (line 146)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe18: 07e8 02a9 
+
+  0x000001b2367cbe1c: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@391 (line 147)
+  0x000001b2367cbe1c: 5007 488b 
+
+  0x000001b2367cbe20: ;   {runtime_call fast_new_instance Runtime1 stub}
+  0x000001b2367cbe20: d2e8 dab3 
+
+  0x000001b2367cbe24: ; ImmutableOopMap {rbx=Oop [72]=Oop }
+                      ;*new {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@408 (line 148)
+  0x000001b2367cbe24: 5007 e95b 
+
+  0x000001b2367cbe28: ;   {metadata({method} {0x000001b28d49c3d0} '<init>' '()V' in 'com/raylib/Raylib$Vector2')}
+  0x000001b2367cbe28: fbff ff49 | bac8 c349 | 8db2 0100 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x000001b2367cbe40: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000001b2367cbe40: ffff e839 
+
+  0x000001b2367cbe44: ; ImmutableOopMap {rbx=Oop rax=Oop [72]=Oop }
+                      ;*synchronization entry
+                      ; - com.raylib.Raylib$Vector2::<init>@-1 (line 198)
+                      ; - main.Button::draw@412 (line 148)
+  0x000001b2367cbe44: 1e51 07e9 | 78fb ffff 
+
+  0x000001b2367cbe4c: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe4c: e8cf a850 
+
+  0x000001b2367cbe50: ; ImmutableOopMap {rax=Oop [72]=Oop [112]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@422 (line 148)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe50: 07e8 caa8 
+
+  0x000001b2367cbe54: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual x {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@458 (line 154)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe54: 5007 e8c5 
+
+  0x000001b2367cbe58: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual width {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@465 (line 154)
+                      ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe58: a850 07e8 
+
+  0x000001b2367cbe5c: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual y {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@481 (line 155)
+  0x000001b2367cbe5c: c0a8 5007 
+
+  0x000001b2367cbe60: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367cbe60: e8bb a850 
+
+  0x000001b2367cbe64: ; ImmutableOopMap {rdx=Oop rsi=Oop [72]=Oop }
+                      ;*invokevirtual height {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.Button::draw@488 (line 155)
+                      ;   {internal_word}
+  0x000001b2367cbe64: 0749 ba6c | bd7c 36b2 | 0100 004d | 8997 7004 
+
+  0x000001b2367cbe74: ;   {runtime_call SafepointBlob}
+  0x000001b2367cbe74: 0000 e905 | ad43 0749 | 8b87 0805 | 0000 49c7 | 8708 0500 | 0000 0000 | 0049 c787 | 1005 0000 
+  0x000001b2367cbe94: 0000 0000 | 4881 c4d0 | 0000 005d 
+
+  0x000001b2367cbea0: ;   {runtime_call unwind_exception Runtime1 stub}
+  0x000001b2367cbea0: e95b 9350 | 07f4 f4f4 
+[Stub Code]
+  0x000001b2367cbea8: ;   {no_reloc}
+  0x000001b2367cbea8: 0f1f 4400 
+
+  0x000001b2367cbeac: ;   {static_stub}
+  0x000001b2367cbeac: 0048 bb00 | 0000 0000 
+
+  0x000001b2367cbeb4: ;   {runtime_call}
+  0x000001b2367cbeb4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbebc: ;   {static_stub}
+  0x000001b2367cbebc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbec4: ;   {runtime_call}
+  0x000001b2367cbec4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbecc: ;   {static_stub}
+  0x000001b2367cbecc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbed4: ;   {runtime_call}
+  0x000001b2367cbed4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbedc: ;   {static_stub}
+  0x000001b2367cbedc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbee4: ;   {runtime_call}
+  0x000001b2367cbee4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbeec: ;   {static_stub}
+  0x000001b2367cbeec: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbef4: ;   {runtime_call}
+  0x000001b2367cbef4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbefc: ;   {static_stub}
+  0x000001b2367cbefc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf04: ;   {runtime_call}
+  0x000001b2367cbf04: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf0c: ;   {static_stub}
+  0x000001b2367cbf0c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf14: ;   {runtime_call}
+  0x000001b2367cbf14: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf1c: ;   {static_stub}
+  0x000001b2367cbf1c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf24: ;   {runtime_call}
+  0x000001b2367cbf24: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf2c: ;   {static_stub}
+  0x000001b2367cbf2c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf34: ;   {runtime_call}
+  0x000001b2367cbf34: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf3c: ;   {static_stub}
+  0x000001b2367cbf3c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf44: ;   {runtime_call}
+  0x000001b2367cbf44: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf4c: ;   {static_stub}
+  0x000001b2367cbf4c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf54: ;   {runtime_call}
+  0x000001b2367cbf54: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf5c: ;   {static_stub}
+  0x000001b2367cbf5c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf64: ;   {runtime_call}
+  0x000001b2367cbf64: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf6c: ;   {static_stub}
+  0x000001b2367cbf6c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf74: ;   {runtime_call}
+  0x000001b2367cbf74: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf7c: ;   {static_stub}
+  0x000001b2367cbf7c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf84: ;   {runtime_call}
+  0x000001b2367cbf84: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf8c: ;   {static_stub}
+  0x000001b2367cbf8c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbf94: ;   {runtime_call}
+  0x000001b2367cbf94: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbf9c: ;   {static_stub}
+  0x000001b2367cbf9c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbfa4: ;   {runtime_call}
+  0x000001b2367cbfa4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbfac: ;   {static_stub}
+  0x000001b2367cbfac: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbfb4: ;   {runtime_call}
+  0x000001b2367cbfb4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbfbc: ;   {static_stub}
+  0x000001b2367cbfbc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbfc4: ;   {runtime_call}
+  0x000001b2367cbfc4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbfcc: ;   {static_stub}
+  0x000001b2367cbfcc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbfd4: ;   {runtime_call}
+  0x000001b2367cbfd4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbfdc: ;   {static_stub}
+  0x000001b2367cbfdc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbfe4: ;   {runtime_call}
+  0x000001b2367cbfe4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbfec: ;   {static_stub}
+  0x000001b2367cbfec: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cbff4: ;   {runtime_call}
+  0x000001b2367cbff4: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cbffc: ;   {static_stub}
+  0x000001b2367cbffc: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc004: ;   {runtime_call}
+  0x000001b2367cc004: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc00c: ;   {static_stub}
+  0x000001b2367cc00c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc014: ;   {runtime_call}
+  0x000001b2367cc014: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc01c: ;   {static_stub}
+  0x000001b2367cc01c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc024: ;   {runtime_call}
+  0x000001b2367cc024: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc02c: ;   {static_stub}
+  0x000001b2367cc02c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc034: ;   {runtime_call}
+  0x000001b2367cc034: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc03c: ;   {static_stub}
+  0x000001b2367cc03c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc044: ;   {runtime_call}
+  0x000001b2367cc044: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc04c: ;   {static_stub}
+  0x000001b2367cc04c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc054: ;   {runtime_call}
+  0x000001b2367cc054: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc05c: ;   {static_stub}
+  0x000001b2367cc05c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc064: ;   {runtime_call}
+  0x000001b2367cc064: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc06c: ;   {static_stub}
+  0x000001b2367cc06c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc074: ;   {runtime_call}
+  0x000001b2367cc074: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc07c: ;   {static_stub}
+  0x000001b2367cc07c: 9048 bb00 | 0000 0000 
+
+  0x000001b2367cc084: ;   {runtime_call}
+  0x000001b2367cc084: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc08c: ;   {static_stub}
+  0x000001b2367cc08c: 48bb 0000 | 0000 0000 
+
+  0x000001b2367cc094: ;   {runtime_call}
+  0x000001b2367cc094: 0000 e9fb 
+
+  0x000001b2367cc098: ;   {static_stub}
+  0x000001b2367cc098: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001b2367cc0a4: ;   {runtime_call}
+  0x000001b2367cc0a4: 00e9 fbff 
+
+  0x000001b2367cc0a8: ;   {static_stub}
+  0x000001b2367cc0a8: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001b2367cc0b4: ;   {runtime_call}
+  0x000001b2367cc0b4: e9fb ffff 
+
+  0x000001b2367cc0b8: ;   {static_stub}
+  0x000001b2367cc0b8: ff48 bb00 | 0000 0000 
+
+  0x000001b2367cc0c0: ;   {runtime_call}
+  0x000001b2367cc0c0: 0000 00e9 | fbff ffff 
+
+  0x000001b2367cc0c8: ;   {static_stub}
+  0x000001b2367cc0c8: 48bb 0000 | 0000 0000 
+
+  0x000001b2367cc0d0: ;   {runtime_call}
+  0x000001b2367cc0d0: 0000 e9fb 
+
+  0x000001b2367cc0d4: ;   {static_stub}
+  0x000001b2367cc0d4: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001b2367cc0e0: ;   {runtime_call}
+  0x000001b2367cc0e0: 00e9 fbff 
+
+  0x000001b2367cc0e4: ;   {static_stub}
+  0x000001b2367cc0e4: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001b2367cc0f0: ;   {runtime_call}
+  0x000001b2367cc0f0: e9fb ffff 
+
+  0x000001b2367cc0f4: ;   {static_stub}
+  0x000001b2367cc0f4: ff48 bb48 | 5e42 8db2 
+
+  0x000001b2367cc0fc: ;   {runtime_call I2C/C2I adapters}
+  0x000001b2367cc0fc: 0100 00e9 | 8388 4307 
+
+  0x000001b2367cc104: ;   {static_stub}
+  0x000001b2367cc104: 48bb 0000 | 0000 0000 
+
+  0x000001b2367cc10c: ;   {runtime_call}
+  0x000001b2367cc10c: 0000 e9fb 
+
+  0x000001b2367cc110: ;   {static_stub}
+  0x000001b2367cc110: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001b2367cc11c: ;   {runtime_call}
+  0x000001b2367cc11c: 00e9 fbff 
+
+  0x000001b2367cc120: ;   {runtime_call handle_exception_from_callee Runtime1 stub}
+  0x000001b2367cc120: ffff e8d9 
+
+  0x000001b2367cc124: ;   {external_word}
+  0x000001b2367cc124: cb50 0748 | b9c0 18d1 | 20fd 7f00 | 0048 83e4 
+
+  0x000001b2367cc134: ;   {runtime_call}
+  0x000001b2367cc134: f048 b8c0 | 9498 20fd | 7f00 00ff 
+
+  0x000001b2367cc140: ;   {section_word}
+  0x000001b2367cc140: d0f4 49ba | 42c1 7c36 | b201 0000 
+
+  0x000001b2367cc14c: ;   {runtime_call DeoptimizationBlob}
+  0x000001b2367cc14c: 4152 e9cd | be43 07f4 | f4f4 f4f4 
+[/MachCode]
+
+
+Compiled method (c1) 424585  820       3       main.TitleScreen::draw (21 bytes)
+ total in heap  [0x000001b2367ca090,0x000001b2367ca548] = 1208
+ relocation     [0x000001b2367ca1e8,0x000001b2367ca258] = 112
+ main code      [0x000001b2367ca260,0x000001b2367ca3f8] = 408
+ stub code      [0x000001b2367ca3f8,0x000001b2367ca470] = 120
+ oops           [0x000001b2367ca470,0x000001b2367ca478] = 8
+ metadata       [0x000001b2367ca478,0x000001b2367ca488] = 16
+ scopes data    [0x000001b2367ca488,0x000001b2367ca4b0] = 40
+ scopes pcs     [0x000001b2367ca4b0,0x000001b2367ca530] = 128
+ dependencies   [0x000001b2367ca530,0x000001b2367ca538] = 8
+ nul chk table  [0x000001b2367ca538,0x000001b2367ca548] = 16
+
+[Constant Pool (empty)]
+
+[MachCode]
+[Entry Point]
+  # {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen'
+  #           [sp+0x30]  (sp of caller)
+  0x000001b2367ca260: 448b 5208 | 49bb 0000 | 004c b201 | 0000 4d03 | d34c 3bd0 
+
+  0x000001b2367ca274: ;   {runtime_call ic_miss_stub}
+  0x000001b2367ca274: 0f85 0647 | 4307 660f | 1f44 0000 
+[Verified Entry Point]
+  0x000001b2367ca280: 8984 2400 | 80ff ff55 | 4883 ec20 | 4181 7f20 | 0100 0000 
+
+  0x000001b2367ca294: ;   {runtime_call StubRoutines (final stubs)}
+  0x000001b2367ca294: 7405 e8e5 | c741 0748 | 8954 2410 
+
+  0x000001b2367ca2a0: ;   {metadata(method data for {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca2a0: 48be 785d | 4d8d b201 | 0000 8bbe | cc00 0000 | 83c7 0289 | becc 0000 | 0081 e7fe | 0700 0085 
+  0x000001b2367ca2c0: ff0f 84c8 
+
+  0x000001b2367ca2c4: ;   {metadata(method data for {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca2c4: 0000 0048 | be78 5d4d | 8db2 0100 | 0048 8386 | 1801 0000 | 0166 0f1f 
+
+  0x000001b2367ca2dc: ;   {static_call}
+  0x000001b2367ca2dc: 4400 00e8 
+
+  0x000001b2367ca2e0: ; ImmutableOopMap {[16]=Oop }
+                      ;*invokestatic BeginDrawing {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.TitleScreen::draw@0 (line 34)
+  0x000001b2367ca2e0: 5c3d 9f07 
+
+  0x000001b2367ca2e4: ;   {other}
+  0x000001b2367ca2e4: 0f1f 8400 | 5402 0000 | 488b 5424 | 108b 720c 
+
+  0x000001b2367ca2f4: ;   {metadata(method data for {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca2f4: 48bf 785d | 4d8d b201 | 0000 4883 | 8728 0100 | 0001 488b | d666 0f1f 
+
+  0x000001b2367ca30c: ;   {static_call}
+  0x000001b2367ca30c: 4400 00e8 
+
+  0x000001b2367ca310: ; ImmutableOopMap {[16]=Oop }
+                      ;*invokestatic ClearBackground {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.TitleScreen::draw@7 (line 35)
+  0x000001b2367ca310: 2c41 9f07 
+
+  0x000001b2367ca314: ;   {other}
+  0x000001b2367ca314: 0f1f 8400 | 8402 0001 | 488b 5424 | 108b 522c 
+
+  0x000001b2367ca324: ; implicit exception: dispatches to 0x000001b2367ca3b0
+  0x000001b2367ca324: 483b 0248 
+
+  0x000001b2367ca328: ;   {metadata(method data for {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca328: 8bf2 48bf | 785d 4d8d | b201 0000 
+
+  0x000001b2367ca334: ;   {metadata('main/Button')}
+  0x000001b2367ca334: 49ba f05b | 014d b201 | 0000 4c89 | 9740 0100 | 0048 8387 | 4801 0000 
+
+  0x000001b2367ca34c: ;   {optimized virtual_call}
+  0x000001b2367ca34c: 0166 90e8 
+
+  0x000001b2367ca350: ; ImmutableOopMap {}
+                      ;*invokevirtual draw {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.TitleScreen::draw@14 (line 36)
+  0x000001b2367ca350: cc07 0000 
+
+  0x000001b2367ca354: ;   {other}
+  0x000001b2367ca354: 0f1f 8400 | c402 0002 
+
+  0x000001b2367ca35c: ;   {metadata(method data for {method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca35c: 48be 785d | 4d8d b201 | 0000 4883 | 8668 0100 
+
+  0x000001b2367ca36c: ;   {static_call}
+  0x000001b2367ca36c: 0001 90e8 
+
+  0x000001b2367ca370: ; ImmutableOopMap {}
+                      ;*invokestatic EndDrawing {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.TitleScreen::draw@17 (line 37)
+  0x000001b2367ca370: 4c5b 9f07 
+
+  0x000001b2367ca374: ;   {other}
+  0x000001b2367ca374: 0f1f 8400 | e402 0003 | 4883 c420 
+
+  0x000001b2367ca380: ;   {poll_return}
+  0x000001b2367ca380: 5d49 3ba7 | 5804 0000 | 0f87 2700 
+
+  0x000001b2367ca38c: ;   {metadata({method} {0x000001b28d4cac78} 'draw' '()V' in 'main/TitleScreen')}
+  0x000001b2367ca38c: 0000 c349 | ba70 ac4c | 8db2 0100 | 004c 8954 | 2408 48c7 | 0424 ffff 
+
+  0x000001b2367ca3a4: ;   {runtime_call counter_overflow Runtime1 stub}
+  0x000001b2367ca3a4: ffff e8d5 
+
+  0x000001b2367ca3a8: ; ImmutableOopMap {rdx=Oop [16]=Oop }
+                      ;*synchronization entry
+                      ; - main.TitleScreen::draw@-1 (line 34)
+  0x000001b2367ca3a8: 3851 07e9 | 17ff ffff 
+
+  0x000001b2367ca3b0: ;   {runtime_call throw_null_pointer_exception Runtime1 stub}
+  0x000001b2367ca3b0: e86b c350 
+
+  0x000001b2367ca3b4: ; ImmutableOopMap {rdx=Oop }
+                      ;*invokevirtual draw {reexecute=0 rethrow=0 return_oop=0}
+                      ; - main.TitleScreen::draw@14 (line 36)
+                      ;   {internal_word}
+  0x000001b2367ca3b4: 0749 ba81 | a37c 36b2 | 0100 004d | 8997 7004 
+
+  0x000001b2367ca3c4: ;   {runtime_call SafepointBlob}
+  0x000001b2367ca3c4: 0000 e9b5 | c743 0749 | 8b87 0805 | 0000 49c7 | 8708 0500 | 0000 0000 | 0049 c787 | 1005 0000 
+  0x000001b2367ca3e4: 0000 0000 | 4883 c420 
+
+  0x000001b2367ca3ec: ;   {runtime_call unwind_exception Runtime1 stub}
+  0x000001b2367ca3ec: 5de9 0eae | 5007 f4f4 | f4f4 f4f4 
+[Stub Code]
+  0x000001b2367ca3f8: ;   {no_reloc}
+  0x000001b2367ca3f8: 0f1f 4400 
+
+  0x000001b2367ca3fc: ;   {static_stub}
+  0x000001b2367ca3fc: 0048 bb00 | 0000 0000 
+
+  0x000001b2367ca404: ;   {runtime_call}
+  0x000001b2367ca404: 0000 00e9 | fbff ffff 
+
+  0x000001b2367ca40c: ;   {static_stub}
+  0x000001b2367ca40c: 48bb 0000 | 0000 0000 
+
+  0x000001b2367ca414: ;   {runtime_call}
+  0x000001b2367ca414: 0000 e9fb 
+
+  0x000001b2367ca418: ;   {static_stub}
+  0x000001b2367ca418: ffff ff48 | bb00 0000 | 0000 0000 
+
+  0x000001b2367ca424: ;   {runtime_call}
+  0x000001b2367ca424: 00e9 fbff 
+
+  0x000001b2367ca428: ;   {static_stub}
+  0x000001b2367ca428: ffff 48bb | 0000 0000 | 0000 0000 
+
+  0x000001b2367ca434: ;   {runtime_call}
+  0x000001b2367ca434: e9fb ffff 
+
+  0x000001b2367ca438: ;   {runtime_call handle_exception_from_callee Runtime1 stub}
+  0x000001b2367ca438: ffe8 c2e8 
+
+  0x000001b2367ca43c: ;   {external_word}
+  0x000001b2367ca43c: 5007 48b9 | c018 d120 | fd7f 0000 | 4883 e4f0 
+
+  0x000001b2367ca44c: ;   {runtime_call}
+  0x000001b2367ca44c: 48b8 c094 | 9820 fd7f | 0000 ffd0 
+
+  0x000001b2367ca458: ;   {section_word}
+  0x000001b2367ca458: f449 ba59 | a47c 36b2 | 0100 0041 
+
+  0x000001b2367ca464: ;   {runtime_call DeoptimizationBlob}
+  0x000001b2367ca464: 52e9 b6db | 4307 f4f4 | f4f4 f4f4 
+[/MachCode]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000001b29a16a9c0, length=12, elements={
+0x000001b22e2bf4f0, 0x000001b24b24c9c0, 0x000001b24b24d030, 0x000001b24b2554a0,
+0x000001b24b255b10, 0x000001b24b25ffe0, 0x000001b24b26fb80, 0x000001b24b271f60,
+0x000001b24b275350, 0x000001b24b4bdc00, 0x000001b24b4caec0, 0x000001b24b6f5160
+}
+
+Java Threads: ( => current thread )
+=>0x000001b22e2bf4f0 JavaThread "main"                              [_thread_in_native, id=22256, stack(0x0000009824c00000,0x0000009824d00000) (1024K)]
+  0x000001b24b24c9c0 JavaThread "Reference Handler"          daemon [_thread_blocked, id=9012, stack(0x0000009825400000,0x0000009825500000) (1024K)]
+  0x000001b24b24d030 JavaThread "Finalizer"                  daemon [_thread_blocked, id=16464, stack(0x0000009825500000,0x0000009825600000) (1024K)]
+  0x000001b24b2554a0 JavaThread "Signal Dispatcher"          daemon [_thread_blocked, id=16660, stack(0x0000009825600000,0x0000009825700000) (1024K)]
+  0x000001b24b255b10 JavaThread "Attach Listener"            daemon [_thread_blocked, id=15772, stack(0x0000009825700000,0x0000009825800000) (1024K)]
+  0x000001b24b25ffe0 JavaThread "Service Thread"             daemon [_thread_blocked, id=1856, stack(0x0000009825800000,0x0000009825900000) (1024K)]
+  0x000001b24b26fb80 JavaThread "Monitor Deflation Thread"   daemon [_thread_blocked, id=22320, stack(0x0000009825900000,0x0000009825a00000) (1024K)]
+  0x000001b24b271f60 JavaThread "C2 CompilerThread0"         daemon [_thread_blocked, id=12668, stack(0x0000009825a00000,0x0000009825b00000) (1024K)]
+  0x000001b24b275350 JavaThread "C1 CompilerThread0"         daemon [_thread_blocked, id=19736, stack(0x0000009825b00000,0x0000009825c00000) (1024K)]
+  0x000001b24b4bdc00 JavaThread "Notification Thread"        daemon [_thread_blocked, id=13692, stack(0x0000009825c00000,0x0000009825d00000) (1024K)]
+  0x000001b24b4caec0 JavaThread "Common-Cleaner"             daemon [_thread_blocked, id=10548, stack(0x0000009825d00000,0x0000009825e00000) (1024K)]
+  0x000001b24b6f5160 JavaThread "JavaCPP Deallocator"        daemon [_thread_blocked, id=8932, stack(0x0000009825e00000,0x0000009825f00000) (1024K)]
+Total: 12
+
+Other Threads:
+  0x000001b24b232dc0 VMThread "VM Thread"                           [id=6604, stack(0x0000009825300000,0x0000009825400000) (1024K)]
+  0x000001b24b213930 WatcherThread "VM Periodic Task Thread"        [id=22280, stack(0x0000009825200000,0x0000009825300000) (1024K)]
+  0x000001b22e310c10 WorkerThread "GC Thread#0"                     [id=5576, stack(0x0000009824d00000,0x0000009824e00000) (1024K)]
+  0x000001b22e3212a0 ConcurrentGCThread "G1 Main Marker"            [id=17528, stack(0x0000009824e00000,0x0000009824f00000) (1024K)]
+  0x000001b22e322070 WorkerThread "G1 Conc#0"                       [id=16852, stack(0x0000009824f00000,0x0000009825000000) (1024K)]
+  0x000001b24b0e4580 ConcurrentGCThread "G1 Refine#0"               [id=10008, stack(0x0000009825000000,0x0000009825100000) (1024K)]
+  0x000001b24b0e69d0 ConcurrentGCThread "G1 Service"                [id=6836, stack(0x0000009825100000,0x0000009825200000) (1024K)]
+Total: 7
+
+Threads with active compile tasks:
+Total: 0
+
+VM state: not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000084400000, size: 1980 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x000001b24c000000-0x000001b24cc60000-0x000001b24cc60000), size 12976128, SharedBaseAddress: 0x000001b24c000000, ArchiveRelocationMode: 1.
+Compressed class space mapped at: 0x000001b24d000000-0x000001b28d000000, reserved size: 1073741824
+Narrow klass base: 0x000001b24c000000, Narrow klass shift: 0, Narrow klass range: 0x41000000
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+ CPUs: 8 total, 8 available
+ Memory: 7915M
+ Large Page Support: Disabled
+ NUMA Support: Disabled
+ Compressed Oops: Enabled (32-bit)
+ Heap Region Size: 1M
+ Heap Min Capacity: 8M
+ Heap Initial Capacity: 124M
+ Heap Max Capacity: 1980M
+ Pre-touch: Disabled
+ Parallel Workers: 8
+ Concurrent Workers: 2
+ Concurrent Refinement Workers: 8
+ Periodic GC: Disabled
+
+Heap:
+ garbage-first heap   total reserved 2027520K, committed 126976K, used 21504K [0x0000000084400000, 0x0000000100000000)
+  region size 1024K, 22 young (22528K), 0 survivors (0K)
+ Metaspace       used 2301K, committed 2496K, reserved 1114112K
+  class space    used 197K, committed 256K, reserved 1048576K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, TAMS=top-at-mark-start, PB=parsable bottom
+|   0|0x0000000084400000, 0x0000000084400000, 0x0000000084500000|  0%| F|  |TAMS 0x0000000084400000| PB 0x0000000084400000| Untracked |  0
+|   1|0x0000000084500000, 0x0000000084500000, 0x0000000084600000|  0%| F|  |TAMS 0x0000000084500000| PB 0x0000000084500000| Untracked |  0
+|   2|0x0000000084600000, 0x0000000084600000, 0x0000000084700000|  0%| F|  |TAMS 0x0000000084600000| PB 0x0000000084600000| Untracked |  0
+|   3|0x0000000084700000, 0x0000000084700000, 0x0000000084800000|  0%| F|  |TAMS 0x0000000084700000| PB 0x0000000084700000| Untracked |  0
+|   4|0x0000000084800000, 0x0000000084800000, 0x0000000084900000|  0%| F|  |TAMS 0x0000000084800000| PB 0x0000000084800000| Untracked |  0
+|   5|0x0000000084900000, 0x0000000084900000, 0x0000000084a00000|  0%| F|  |TAMS 0x0000000084900000| PB 0x0000000084900000| Untracked |  0
+|   6|0x0000000084a00000, 0x0000000084a00000, 0x0000000084b00000|  0%| F|  |TAMS 0x0000000084a00000| PB 0x0000000084a00000| Untracked |  0
+|   7|0x0000000084b00000, 0x0000000084b00000, 0x0000000084c00000|  0%| F|  |TAMS 0x0000000084b00000| PB 0x0000000084b00000| Untracked |  0
+|   8|0x0000000084c00000, 0x0000000084c00000, 0x0000000084d00000|  0%| F|  |TAMS 0x0000000084c00000| PB 0x0000000084c00000| Untracked |  0
+|   9|0x0000000084d00000, 0x0000000084d00000, 0x0000000084e00000|  0%| F|  |TAMS 0x0000000084d00000| PB 0x0000000084d00000| Untracked |  0
+|  10|0x0000000084e00000, 0x0000000084e00000, 0x0000000084f00000|  0%| F|  |TAMS 0x0000000084e00000| PB 0x0000000084e00000| Untracked |  0
+|  11|0x0000000084f00000, 0x0000000084f00000, 0x0000000085000000|  0%| F|  |TAMS 0x0000000084f00000| PB 0x0000000084f00000| Untracked |  0
+|  12|0x0000000085000000, 0x0000000085000000, 0x0000000085100000|  0%| F|  |TAMS 0x0000000085000000| PB 0x0000000085000000| Untracked |  0
+|  13|0x0000000085100000, 0x0000000085100000, 0x0000000085200000|  0%| F|  |TAMS 0x0000000085100000| PB 0x0000000085100000| Untracked |  0
+|  14|0x0000000085200000, 0x0000000085200000, 0x0000000085300000|  0%| F|  |TAMS 0x0000000085200000| PB 0x0000000085200000| Untracked |  0
+|  15|0x0000000085300000, 0x0000000085300000, 0x0000000085400000|  0%| F|  |TAMS 0x0000000085300000| PB 0x0000000085300000| Untracked |  0
+|  16|0x0000000085400000, 0x0000000085400000, 0x0000000085500000|  0%| F|  |TAMS 0x0000000085400000| PB 0x0000000085400000| Untracked |  0
+|  17|0x0000000085500000, 0x0000000085500000, 0x0000000085600000|  0%| F|  |TAMS 0x0000000085500000| PB 0x0000000085500000| Untracked |  0
+|  18|0x0000000085600000, 0x0000000085600000, 0x0000000085700000|  0%| F|  |TAMS 0x0000000085600000| PB 0x0000000085600000| Untracked |  0
+|  19|0x0000000085700000, 0x0000000085700000, 0x0000000085800000|  0%| F|  |TAMS 0x0000000085700000| PB 0x0000000085700000| Untracked |  0
+|  20|0x0000000085800000, 0x0000000085800000, 0x0000000085900000|  0%| F|  |TAMS 0x0000000085800000| PB 0x0000000085800000| Untracked |  0
+|  21|0x0000000085900000, 0x0000000085900000, 0x0000000085a00000|  0%| F|  |TAMS 0x0000000085900000| PB 0x0000000085900000| Untracked |  0
+|  22|0x0000000085a00000, 0x0000000085a00000, 0x0000000085b00000|  0%| F|  |TAMS 0x0000000085a00000| PB 0x0000000085a00000| Untracked |  0
+|  23|0x0000000085b00000, 0x0000000085b00000, 0x0000000085c00000|  0%| F|  |TAMS 0x0000000085b00000| PB 0x0000000085b00000| Untracked |  0
+|  24|0x0000000085c00000, 0x0000000085c00000, 0x0000000085d00000|  0%| F|  |TAMS 0x0000000085c00000| PB 0x0000000085c00000| Untracked |  0
+|  25|0x0000000085d00000, 0x0000000085d00000, 0x0000000085e00000|  0%| F|  |TAMS 0x0000000085d00000| PB 0x0000000085d00000| Untracked |  0
+|  26|0x0000000085e00000, 0x0000000085e00000, 0x0000000085f00000|  0%| F|  |TAMS 0x0000000085e00000| PB 0x0000000085e00000| Untracked |  0
+|  27|0x0000000085f00000, 0x0000000085f00000, 0x0000000086000000|  0%| F|  |TAMS 0x0000000085f00000| PB 0x0000000085f00000| Untracked |  0
+|  28|0x0000000086000000, 0x0000000086000000, 0x0000000086100000|  0%| F|  |TAMS 0x0000000086000000| PB 0x0000000086000000| Untracked |  0
+|  29|0x0000000086100000, 0x0000000086100000, 0x0000000086200000|  0%| F|  |TAMS 0x0000000086100000| PB 0x0000000086100000| Untracked |  0
+|  30|0x0000000086200000, 0x0000000086200000, 0x0000000086300000|  0%| F|  |TAMS 0x0000000086200000| PB 0x0000000086200000| Untracked |  0
+|  31|0x0000000086300000, 0x0000000086300000, 0x0000000086400000|  0%| F|  |TAMS 0x0000000086300000| PB 0x0000000086300000| Untracked |  0
+|  32|0x0000000086400000, 0x0000000086400000, 0x0000000086500000|  0%| F|  |TAMS 0x0000000086400000| PB 0x0000000086400000| Untracked |  0
+|  33|0x0000000086500000, 0x0000000086500000, 0x0000000086600000|  0%| F|  |TAMS 0x0000000086500000| PB 0x0000000086500000| Untracked |  0
+|  34|0x0000000086600000, 0x0000000086600000, 0x0000000086700000|  0%| F|  |TAMS 0x0000000086600000| PB 0x0000000086600000| Untracked |  0
+|  35|0x0000000086700000, 0x0000000086700000, 0x0000000086800000|  0%| F|  |TAMS 0x0000000086700000| PB 0x0000000086700000| Untracked |  0
+|  36|0x0000000086800000, 0x0000000086800000, 0x0000000086900000|  0%| F|  |TAMS 0x0000000086800000| PB 0x0000000086800000| Untracked |  0
+|  37|0x0000000086900000, 0x0000000086900000, 0x0000000086a00000|  0%| F|  |TAMS 0x0000000086900000| PB 0x0000000086900000| Untracked |  0
+|  38|0x0000000086a00000, 0x0000000086a00000, 0x0000000086b00000|  0%| F|  |TAMS 0x0000000086a00000| PB 0x0000000086a00000| Untracked |  0
+|  39|0x0000000086b00000, 0x0000000086b00000, 0x0000000086c00000|  0%| F|  |TAMS 0x0000000086b00000| PB 0x0000000086b00000| Untracked |  0
+|  40|0x0000000086c00000, 0x0000000086c00000, 0x0000000086d00000|  0%| F|  |TAMS 0x0000000086c00000| PB 0x0000000086c00000| Untracked |  0
+|  41|0x0000000086d00000, 0x0000000086d00000, 0x0000000086e00000|  0%| F|  |TAMS 0x0000000086d00000| PB 0x0000000086d00000| Untracked |  0
+|  42|0x0000000086e00000, 0x0000000086e00000, 0x0000000086f00000|  0%| F|  |TAMS 0x0000000086e00000| PB 0x0000000086e00000| Untracked |  0
+|  43|0x0000000086f00000, 0x0000000086f00000, 0x0000000087000000|  0%| F|  |TAMS 0x0000000086f00000| PB 0x0000000086f00000| Untracked |  0
+|  44|0x0000000087000000, 0x0000000087000000, 0x0000000087100000|  0%| F|  |TAMS 0x0000000087000000| PB 0x0000000087000000| Untracked |  0
+|  45|0x0000000087100000, 0x0000000087100000, 0x0000000087200000|  0%| F|  |TAMS 0x0000000087100000| PB 0x0000000087100000| Untracked |  0
+|  46|0x0000000087200000, 0x0000000087200000, 0x0000000087300000|  0%| F|  |TAMS 0x0000000087200000| PB 0x0000000087200000| Untracked |  0
+|  47|0x0000000087300000, 0x0000000087300000, 0x0000000087400000|  0%| F|  |TAMS 0x0000000087300000| PB 0x0000000087300000| Untracked |  0
+|  48|0x0000000087400000, 0x0000000087400000, 0x0000000087500000|  0%| F|  |TAMS 0x0000000087400000| PB 0x0000000087400000| Untracked |  0
+|  49|0x0000000087500000, 0x0000000087500000, 0x0000000087600000|  0%| F|  |TAMS 0x0000000087500000| PB 0x0000000087500000| Untracked |  0
+|  50|0x0000000087600000, 0x0000000087600000, 0x0000000087700000|  0%| F|  |TAMS 0x0000000087600000| PB 0x0000000087600000| Untracked |  0
+|  51|0x0000000087700000, 0x0000000087700000, 0x0000000087800000|  0%| F|  |TAMS 0x0000000087700000| PB 0x0000000087700000| Untracked |  0
+|  52|0x0000000087800000, 0x0000000087800000, 0x0000000087900000|  0%| F|  |TAMS 0x0000000087800000| PB 0x0000000087800000| Untracked |  0
+|  53|0x0000000087900000, 0x0000000087900000, 0x0000000087a00000|  0%| F|  |TAMS 0x0000000087900000| PB 0x0000000087900000| Untracked |  0
+|  54|0x0000000087a00000, 0x0000000087a00000, 0x0000000087b00000|  0%| F|  |TAMS 0x0000000087a00000| PB 0x0000000087a00000| Untracked |  0
+|  55|0x0000000087b00000, 0x0000000087b00000, 0x0000000087c00000|  0%| F|  |TAMS 0x0000000087b00000| PB 0x0000000087b00000| Untracked |  0
+|  56|0x0000000087c00000, 0x0000000087c00000, 0x0000000087d00000|  0%| F|  |TAMS 0x0000000087c00000| PB 0x0000000087c00000| Untracked |  0
+|  57|0x0000000087d00000, 0x0000000087d00000, 0x0000000087e00000|  0%| F|  |TAMS 0x0000000087d00000| PB 0x0000000087d00000| Untracked |  0
+|  58|0x0000000087e00000, 0x0000000087e00000, 0x0000000087f00000|  0%| F|  |TAMS 0x0000000087e00000| PB 0x0000000087e00000| Untracked |  0
+|  59|0x0000000087f00000, 0x0000000087f00000, 0x0000000088000000|  0%| F|  |TAMS 0x0000000087f00000| PB 0x0000000087f00000| Untracked |  0
+|  60|0x0000000088000000, 0x0000000088000000, 0x0000000088100000|  0%| F|  |TAMS 0x0000000088000000| PB 0x0000000088000000| Untracked |  0
+|  61|0x0000000088100000, 0x0000000088100000, 0x0000000088200000|  0%| F|  |TAMS 0x0000000088100000| PB 0x0000000088100000| Untracked |  0
+|  62|0x0000000088200000, 0x0000000088200000, 0x0000000088300000|  0%| F|  |TAMS 0x0000000088200000| PB 0x0000000088200000| Untracked |  0
+|  63|0x0000000088300000, 0x0000000088300000, 0x0000000088400000|  0%| F|  |TAMS 0x0000000088300000| PB 0x0000000088300000| Untracked |  0
+|  64|0x0000000088400000, 0x0000000088400000, 0x0000000088500000|  0%| F|  |TAMS 0x0000000088400000| PB 0x0000000088400000| Untracked |  0
+|  65|0x0000000088500000, 0x0000000088500000, 0x0000000088600000|  0%| F|  |TAMS 0x0000000088500000| PB 0x0000000088500000| Untracked |  0
+|  66|0x0000000088600000, 0x0000000088600000, 0x0000000088700000|  0%| F|  |TAMS 0x0000000088600000| PB 0x0000000088600000| Untracked |  0
+|  67|0x0000000088700000, 0x0000000088700000, 0x0000000088800000|  0%| F|  |TAMS 0x0000000088700000| PB 0x0000000088700000| Untracked |  0
+|  68|0x0000000088800000, 0x0000000088800000, 0x0000000088900000|  0%| F|  |TAMS 0x0000000088800000| PB 0x0000000088800000| Untracked |  0
+|  69|0x0000000088900000, 0x0000000088900000, 0x0000000088a00000|  0%| F|  |TAMS 0x0000000088900000| PB 0x0000000088900000| Untracked |  0
+|  70|0x0000000088a00000, 0x0000000088a00000, 0x0000000088b00000|  0%| F|  |TAMS 0x0000000088a00000| PB 0x0000000088a00000| Untracked |  0
+|  71|0x0000000088b00000, 0x0000000088b00000, 0x0000000088c00000|  0%| F|  |TAMS 0x0000000088b00000| PB 0x0000000088b00000| Untracked |  0
+|  72|0x0000000088c00000, 0x0000000088c00000, 0x0000000088d00000|  0%| F|  |TAMS 0x0000000088c00000| PB 0x0000000088c00000| Untracked |  0
+|  73|0x0000000088d00000, 0x0000000088d00000, 0x0000000088e00000|  0%| F|  |TAMS 0x0000000088d00000| PB 0x0000000088d00000| Untracked |  0
+|  74|0x0000000088e00000, 0x0000000088e00000, 0x0000000088f00000|  0%| F|  |TAMS 0x0000000088e00000| PB 0x0000000088e00000| Untracked |  0
+|  75|0x0000000088f00000, 0x0000000088f00000, 0x0000000089000000|  0%| F|  |TAMS 0x0000000088f00000| PB 0x0000000088f00000| Untracked |  0
+|  76|0x0000000089000000, 0x0000000089000000, 0x0000000089100000|  0%| F|  |TAMS 0x0000000089000000| PB 0x0000000089000000| Untracked |  0
+|  77|0x0000000089100000, 0x0000000089100000, 0x0000000089200000|  0%| F|  |TAMS 0x0000000089100000| PB 0x0000000089100000| Untracked |  0
+|  78|0x0000000089200000, 0x0000000089200000, 0x0000000089300000|  0%| F|  |TAMS 0x0000000089200000| PB 0x0000000089200000| Untracked |  0
+|  79|0x0000000089300000, 0x0000000089300000, 0x0000000089400000|  0%| F|  |TAMS 0x0000000089300000| PB 0x0000000089300000| Untracked |  0
+|  80|0x0000000089400000, 0x0000000089400000, 0x0000000089500000|  0%| F|  |TAMS 0x0000000089400000| PB 0x0000000089400000| Untracked |  0
+|  81|0x0000000089500000, 0x0000000089500000, 0x0000000089600000|  0%| F|  |TAMS 0x0000000089500000| PB 0x0000000089500000| Untracked |  0
+|  82|0x0000000089600000, 0x0000000089600000, 0x0000000089700000|  0%| F|  |TAMS 0x0000000089600000| PB 0x0000000089600000| Untracked |  0
+|  83|0x0000000089700000, 0x0000000089700000, 0x0000000089800000|  0%| F|  |TAMS 0x0000000089700000| PB 0x0000000089700000| Untracked |  0
+|  84|0x0000000089800000, 0x0000000089800000, 0x0000000089900000|  0%| F|  |TAMS 0x0000000089800000| PB 0x0000000089800000| Untracked |  0
+|  85|0x0000000089900000, 0x0000000089900000, 0x0000000089a00000|  0%| F|  |TAMS 0x0000000089900000| PB 0x0000000089900000| Untracked |  0
+|  86|0x0000000089a00000, 0x0000000089a00000, 0x0000000089b00000|  0%| F|  |TAMS 0x0000000089a00000| PB 0x0000000089a00000| Untracked |  0
+|  87|0x0000000089b00000, 0x0000000089b00000, 0x0000000089c00000|  0%| F|  |TAMS 0x0000000089b00000| PB 0x0000000089b00000| Untracked |  0
+|  88|0x0000000089c00000, 0x0000000089c00000, 0x0000000089d00000|  0%| F|  |TAMS 0x0000000089c00000| PB 0x0000000089c00000| Untracked |  0
+|  89|0x0000000089d00000, 0x0000000089d00000, 0x0000000089e00000|  0%| F|  |TAMS 0x0000000089d00000| PB 0x0000000089d00000| Untracked |  0
+|  90|0x0000000089e00000, 0x0000000089e00000, 0x0000000089f00000|  0%| F|  |TAMS 0x0000000089e00000| PB 0x0000000089e00000| Untracked |  0
+|  91|0x0000000089f00000, 0x0000000089f00000, 0x000000008a000000|  0%| F|  |TAMS 0x0000000089f00000| PB 0x0000000089f00000| Untracked |  0
+|  92|0x000000008a000000, 0x000000008a000000, 0x000000008a100000|  0%| F|  |TAMS 0x000000008a000000| PB 0x000000008a000000| Untracked |  0
+|  93|0x000000008a100000, 0x000000008a100000, 0x000000008a200000|  0%| F|  |TAMS 0x000000008a100000| PB 0x000000008a100000| Untracked |  0
+|  94|0x000000008a200000, 0x000000008a200000, 0x000000008a300000|  0%| F|  |TAMS 0x000000008a200000| PB 0x000000008a200000| Untracked |  0
+|  95|0x000000008a300000, 0x000000008a300000, 0x000000008a400000|  0%| F|  |TAMS 0x000000008a300000| PB 0x000000008a300000| Untracked |  0
+|  96|0x000000008a400000, 0x000000008a400000, 0x000000008a500000|  0%| F|  |TAMS 0x000000008a400000| PB 0x000000008a400000| Untracked |  0
+|  97|0x000000008a500000, 0x000000008a500000, 0x000000008a600000|  0%| F|  |TAMS 0x000000008a500000| PB 0x000000008a500000| Untracked |  0
+|  98|0x000000008a600000, 0x000000008a600000, 0x000000008a700000|  0%| F|  |TAMS 0x000000008a600000| PB 0x000000008a600000| Untracked |  0
+|  99|0x000000008a700000, 0x000000008a700000, 0x000000008a800000|  0%| F|  |TAMS 0x000000008a700000| PB 0x000000008a700000| Untracked |  0
+| 100|0x000000008a800000, 0x000000008a800000, 0x000000008a900000|  0%| F|  |TAMS 0x000000008a800000| PB 0x000000008a800000| Untracked |  0
+| 101|0x000000008a900000, 0x000000008a900000, 0x000000008aa00000|  0%| F|  |TAMS 0x000000008a900000| PB 0x000000008a900000| Untracked |  0
+| 102|0x000000008aa00000, 0x000000008aaf5ca0, 0x000000008ab00000| 96%| E|  |TAMS 0x000000008aa00000| PB 0x000000008aa00000| Complete |  0
+| 103|0x000000008ab00000, 0x000000008ac00000, 0x000000008ac00000|100%| E|CS|TAMS 0x000000008ab00000| PB 0x000000008ab00000| Complete |  0
+| 104|0x000000008ac00000, 0x000000008ad00000, 0x000000008ad00000|100%| E|CS|TAMS 0x000000008ac00000| PB 0x000000008ac00000| Complete |  0
+| 105|0x000000008ad00000, 0x000000008ae00000, 0x000000008ae00000|100%| E|CS|TAMS 0x000000008ad00000| PB 0x000000008ad00000| Complete |  0
+| 106|0x000000008ae00000, 0x000000008af00000, 0x000000008af00000|100%| E|CS|TAMS 0x000000008ae00000| PB 0x000000008ae00000| Complete |  0
+| 107|0x000000008af00000, 0x000000008b000000, 0x000000008b000000|100%| E|CS|TAMS 0x000000008af00000| PB 0x000000008af00000| Complete |  0
+| 108|0x000000008b000000, 0x000000008b100000, 0x000000008b100000|100%| E|CS|TAMS 0x000000008b000000| PB 0x000000008b000000| Complete |  0
+| 109|0x000000008b100000, 0x000000008b200000, 0x000000008b200000|100%| E|CS|TAMS 0x000000008b100000| PB 0x000000008b100000| Complete |  0
+| 110|0x000000008b200000, 0x000000008b300000, 0x000000008b300000|100%| E|CS|TAMS 0x000000008b200000| PB 0x000000008b200000| Complete |  0
+| 111|0x000000008b300000, 0x000000008b400000, 0x000000008b400000|100%| E|CS|TAMS 0x000000008b300000| PB 0x000000008b300000| Complete |  0
+| 112|0x000000008b400000, 0x000000008b500000, 0x000000008b500000|100%| E|CS|TAMS 0x000000008b400000| PB 0x000000008b400000| Complete |  0
+| 113|0x000000008b500000, 0x000000008b600000, 0x000000008b600000|100%| E|CS|TAMS 0x000000008b500000| PB 0x000000008b500000| Complete |  0
+| 114|0x000000008b600000, 0x000000008b700000, 0x000000008b700000|100%| E|CS|TAMS 0x000000008b600000| PB 0x000000008b600000| Complete |  0
+| 115|0x000000008b700000, 0x000000008b800000, 0x000000008b800000|100%| E|CS|TAMS 0x000000008b700000| PB 0x000000008b700000| Complete |  0
+| 116|0x000000008b800000, 0x000000008b900000, 0x000000008b900000|100%| E|CS|TAMS 0x000000008b800000| PB 0x000000008b800000| Complete |  0
+| 117|0x000000008b900000, 0x000000008ba00000, 0x000000008ba00000|100%| E|CS|TAMS 0x000000008b900000| PB 0x000000008b900000| Complete |  0
+| 118|0x000000008ba00000, 0x000000008bb00000, 0x000000008bb00000|100%| E|CS|TAMS 0x000000008ba00000| PB 0x000000008ba00000| Complete |  0
+| 119|0x000000008bb00000, 0x000000008bc00000, 0x000000008bc00000|100%| E|CS|TAMS 0x000000008bb00000| PB 0x000000008bb00000| Complete |  0
+| 120|0x000000008bc00000, 0x000000008bd00000, 0x000000008bd00000|100%| E|CS|TAMS 0x000000008bc00000| PB 0x000000008bc00000| Complete |  0
+| 121|0x000000008bd00000, 0x000000008be00000, 0x000000008be00000|100%| E|CS|TAMS 0x000000008bd00000| PB 0x000000008bd00000| Complete |  0
+| 122|0x000000008be00000, 0x000000008bf00000, 0x000000008bf00000|100%| E|CS|TAMS 0x000000008be00000| PB 0x000000008be00000| Complete |  0
+| 123|0x000000008bf00000, 0x000000008c000000, 0x000000008c000000|100%| E|CS|TAMS 0x000000008bf00000| PB 0x000000008bf00000| Complete |  0
+
+Card table byte_map: [0x000001b2464d0000,0x000001b2468b0000] _byte_map_base: 0x000001b2460ae000
+
+Marking Bits: (CMBitMap*) 0x000001b22e311240
+ Bits: [0x000001b2468b0000, 0x000001b2487a0000)
+
+Polling page: 0x000001b22e380000
+
+Metaspace:
+
+Usage:
+  Non-class:      2.05 MB used.
+      Class:    197.87 KB used.
+       Both:      2.25 MB used.
+
+Virtual space:
+  Non-class space:       64.00 MB reserved,       2.19 MB (  3%) committed,  1 nodes.
+      Class space:        1.00 GB reserved,     256.00 KB ( <1%) committed,  1 nodes.
+             Both:        1.06 GB reserved,       2.44 MB ( <1%) committed. 
+
+Chunk freelists:
+   Non-Class:  11.12 MB
+       Class:  15.64 MB
+        Both:  26.76 MB
+
+MaxMetaspaceSize: unlimited
+CompressedClassSpaceSize: 1.00 GB
+Initial GC threshold: 21.00 MB
+Current GC threshold: 21.00 MB
+CDS: on
+ - commit_granule_bytes: 65536.
+ - commit_granule_words: 8192.
+ - virtual_space_node_default_size: 8388608.
+ - enlarge_chunks_in_place: 1.
+ - use_allocation_guard: 0.
+
+
+Internal statistics:
+
+num_allocs_failed_limit: 0.
+num_arena_births: 50.
+num_arena_deaths: 0.
+num_vsnodes_births: 2.
+num_vsnodes_deaths: 0.
+num_space_committed: 39.
+num_space_uncommitted: 0.
+num_chunks_returned_to_freelist: 0.
+num_chunks_taken_from_freelist: 93.
+num_chunk_merges: 0.
+num_chunk_splits: 65.
+num_chunks_enlarged: 46.
+num_inconsistent_stats: 0.
+
+CodeHeap 'non-profiled nmethods': size=120000Kb used=514Kb max_used=514Kb free=119485Kb
+ bounds [0x000001b23e150000, 0x000001b23e3c0000, 0x000001b245680000]
+CodeHeap 'profiled nmethods': size=120000Kb used=1417Kb max_used=1417Kb free=118582Kb
+ bounds [0x000001b236680000, 0x000001b2368f0000, 0x000001b23dbb0000]
+CodeHeap 'non-nmethods': size=5760Kb used=1546Kb max_used=1564Kb free=4213Kb
+ bounds [0x000001b23dbb0000, 0x000001b23de20000, 0x000001b23e150000]
+ total_blobs=1428 nmethods=931 adapters=402
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 27.341 Thread 0x000001b24b271f60  922   !   4       java.util.WeakHashMap::expungeStaleEntries (139 bytes)
+Event: 27.344 Thread 0x000001b24b271f60 nmethod 922 0x000001b23e1cb310 code [0x000001b23e1cb4a0, 0x000001b23e1cb590]
+Event: 27.391 Thread 0x000001b24b271f60  923       4       java.util.WeakHashMap::hash (28 bytes)
+Event: 27.394 Thread 0x000001b24b271f60 nmethod 923 0x000001b23e1cb690 code [0x000001b23e1cb820, 0x000001b23e1cb958]
+Event: 27.525 Thread 0x000001b24b271f60  924       4       java.lang.ThreadLocal::get (35 bytes)
+Event: 27.530 Thread 0x000001b24b271f60 nmethod 924 0x000001b23e1cba10 code [0x000001b23e1cbbc0, 0x000001b23e1cbd78]
+Event: 28.294 Thread 0x000001b24b271f60  925       4       java.util.WeakHashMap::get (75 bytes)
+Event: 28.301 Thread 0x000001b24b271f60 nmethod 925 0x000001b23e1cbf90 code [0x000001b23e1cc140, 0x000001b23e1cc3f8]
+Event: 28.695 Thread 0x000001b24b271f60  926       4       java.lang.Object::equals (11 bytes)
+Event: 28.695 Thread 0x000001b24b271f60 nmethod 926 0x000001b23e1cc690 code [0x000001b23e1cc800, 0x000001b23e1cc898]
+Event: 29.262 Thread 0x000001b24b271f60  927       4       java.util.ArrayDeque$DeqIterator::<init> (34 bytes)
+Event: 29.269 Thread 0x000001b24b271f60 nmethod 927 0x000001b23e1cc990 code [0x000001b23e1ccb20, 0x000001b23e1ccd30]
+Event: 29.496 Thread 0x000001b24b271f60  928       4       org.bytedeco.javacpp.Pointer::init (52 bytes)
+Event: 29.537 Thread 0x000001b24b271f60 nmethod 928 0x000001b23e1cce90 code [0x000001b23e1cd100, 0x000001b23e1ce178]
+Event: 30.031 Thread 0x000001b24b271f60  929   !   4       org.bytedeco.javacpp.Pointer$DeallocatorReference::add (82 bytes)
+Event: 30.041 Thread 0x000001b24b271f60 nmethod 929 0x000001b23e1cec10 code [0x000001b23e1cedc0, 0x000001b23e1cf380]
+Event: 399.931 Thread 0x000001b24b271f60  930   !   4       org.bytedeco.javacpp.Pointer::deallocator (568 bytes)
+Event: 399.937 Thread 0x000001b24b271f60 nmethod 930 0x000001b23e1cf490 code [0x000001b23e1cf6e0, 0x000001b23e1d0328]
+Event: 402.365 Thread 0x000001b24b275350  931       3       java.util.HashMap::isEmpty (13 bytes)
+Event: 402.365 Thread 0x000001b24b275350 nmethod 931 0x000001b2367e2110 code [0x000001b2367e22a0, 0x000001b2367e2400]
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (20 events):
+Event: 0.718 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-localization-l1-2-0.dll
+Event: 0.730 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-sysinfo-l1-1-0.dll
+Event: 0.745 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-synch-l1-2-0.dll
+Event: 0.759 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-console-l1-1-0.dll
+Event: 0.776 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-debug-l1-1-0.dll
+Event: 0.794 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-rtlsupport-l1-1-0.dll
+Event: 0.809 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-processthreads-l1-1-1.dll
+Event: 0.824 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-file-l1-2-0.dll
+Event: 0.840 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-profile-l1-1-0.dll
+Event: 0.849 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-memory-l1-1-0.dll
+Event: 0.863 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-util-l1-1-0.dll
+Event: 0.876 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-interlocked-l1-1-0.dll
+Event: 0.893 Loaded shared library C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\ucrtbase.dll
+Event: 0.907 Loaded shared library C:\Program Files\Java\jdk-22\bin\vcruntime140.dll
+Event: 0.923 Loaded shared library C:\Program Files\Java\jdk-22\bin\vcruntime140_1.dll
+Event: 0.938 Loaded shared library C:\Program Files\Java\jdk-22\bin\msvcp140.dll
+Event: 0.951 Loaded shared library C:\Windows\System32\msvcp140_1.dll
+Event: 0.966 Loaded shared library C:\Windows\System32\concrt140.dll
+Event: 0.983 Loaded shared library C:\Windows\System32\vcomp140.dll
+Event: 1.015 Loaded shared library C:\Windows\System32\libomp140.x86_64.dll
+
+Deoptimization events (20 events):
+Event: 1.039 Thread 0x000001b22e2bf4f0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001b23e1aa9f8 relative=0x0000000000000558
+Event: 1.039 Thread 0x000001b22e2bf4f0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001b23e1aa9f8 method=java.util.zip.ZipFile$Source.getEntryPos(Ljava/lang/String;Z)I @ 46 c2
+Event: 1.039 Thread 0x000001b22e2bf4f0 DEOPT PACKING pc=0x000001b23e1aa9f8 sp=0x0000009824cfcb20
+Event: 1.039 Thread 0x000001b22e2bf4f0 DEOPT UNPACKING pc=0x000001b23dc07da2 sp=0x0000009824cfc908 mode 2
+Event: 1.039 Thread 0x000001b22e2bf4f0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001b23e1a11a0 relative=0x0000000000001380
+Event: 1.039 Thread 0x000001b22e2bf4f0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001b23e1a11a0 method=java.net.URL.<init>(Ljava/net/URL;Ljava/lang/String;Ljava/net/URLStreamHandler;)V @ 273 c2
+Event: 1.039 Thread 0x000001b22e2bf4f0 DEOPT PACKING pc=0x000001b23e1a11a0 sp=0x0000009824cfc9e0
+Event: 1.039 Thread 0x000001b22e2bf4f0 DEOPT UNPACKING pc=0x000001b23dc07da2 sp=0x0000009824cfc970 mode 2
+Event: 1.041 Thread 0x000001b22e2bf4f0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001b23e1a9540 relative=0x0000000000000440
+Event: 1.041 Thread 0x000001b22e2bf4f0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001b23e1a9540 method=java.util.zip.ZipFile$Source.getEntryPos(Ljava/lang/String;Z)I @ 46 c2
+Event: 1.041 Thread 0x000001b22e2bf4f0 DEOPT PACKING pc=0x000001b23e1a9540 sp=0x0000009824cfca40
+Event: 1.041 Thread 0x000001b22e2bf4f0 DEOPT UNPACKING pc=0x000001b23dc07da2 sp=0x0000009824cfc940 mode 2
+Event: 1.041 Thread 0x000001b22e2bf4f0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001b23e1a6c88 relative=0x00000000000002a8
+Event: 1.041 Thread 0x000001b22e2bf4f0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001b23e1a6c88 method=java.util.zip.ZipFile$Source.getEntryPos(Ljava/lang/String;Z)I @ 46 c2
+Event: 1.042 Thread 0x000001b22e2bf4f0 DEOPT PACKING pc=0x000001b23e1a6c88 sp=0x0000009824cfc9c0
+Event: 1.042 Thread 0x000001b22e2bf4f0 DEOPT UNPACKING pc=0x000001b23dc07da2 sp=0x0000009824cfc940 mode 2
+Event: 9.104 Thread 0x000001b22e2bf4f0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001b23e16f2f8 relative=0x0000000000000158
+Event: 9.104 Thread 0x000001b22e2bf4f0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001b23e16f2f8 method=java.util.concurrent.locks.ReentrantLock$NonfairSync.initialTryLock()Z @ 10 c2
+Event: 9.104 Thread 0x000001b22e2bf4f0 DEOPT PACKING pc=0x000001b23e16f2f8 sp=0x0000009824cfedd0
+Event: 9.104 Thread 0x000001b22e2bf4f0 DEOPT UNPACKING pc=0x000001b23dc07da2 sp=0x0000009824cfed78 mode 2
+
+Classes loaded (20 events):
+Event: 0.375 Loading class java/time/zone/ZoneOffsetTransition
+Event: 0.375 Loading class java/time/zone/ZoneOffsetTransition done
+Event: 0.376 Loading class java/time/temporal/TemporalAdjusters
+Event: 0.376 Loading class java/time/temporal/TemporalAdjusters done
+Event: 0.379 Loading class java/time/Year
+Event: 0.379 Loading class java/time/Year done
+Event: 0.400 Loading class java/lang/NumberFormatException
+Event: 0.400 Loading class java/lang/NumberFormatException done
+Event: 0.408 Loading class java/lang/ProcessEnvironment
+Event: 0.409 Loading class java/lang/ProcessEnvironment done
+Event: 0.409 Loading class java/lang/ProcessEnvironment$NameComparator
+Event: 0.409 Loading class java/lang/ProcessEnvironment$NameComparator done
+Event: 0.409 Loading class java/lang/ProcessEnvironment$EntryComparator
+Event: 0.409 Loading class java/lang/ProcessEnvironment$EntryComparator done
+Event: 0.409 Loading class java/lang/ProcessEnvironment$CheckedEntrySet
+Event: 0.409 Loading class java/lang/ProcessEnvironment$CheckedEntrySet done
+Event: 0.409 Loading class java/lang/ProcessEnvironment$CheckedEntrySet$1
+Event: 0.409 Loading class java/lang/ProcessEnvironment$CheckedEntrySet$1 done
+Event: 0.409 Loading class java/lang/ProcessEnvironment$CheckedEntry
+Event: 0.410 Loading class java/lang/ProcessEnvironment$CheckedEntry done
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (7 events):
+Event: 0.206 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bd7b4e8}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)'> (0x000000008bd7b4e8) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+Event: 0.210 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bd85278}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeInterface(java.lang.Object, java.lang.Object)'> (0x000000008bd85278) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+Event: 0.210 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/IncompatibleClassChangeError'{0x000000008bd88580}: Found class java.lang.Object, but interface was expected> (0x000000008bd88580) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 841]
+Event: 0.211 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bd8b2e0}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, java.lang.Object)'> (0x000000008bd8b2e0) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+Event: 0.212 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bd8e6e0}: 'void java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object)'> (0x000000008bd8e6e0) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+Event: 0.213 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bd94740}: 'int java.lang.invoke.DirectMethodHandle$Holder.invokeStaticInit(java.lang.Object, java.lang.Object)'> (0x000000008bd94740) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+Event: 0.377 Thread 0x000001b22e2bf4f0 Exception <a 'java/lang/NoSuchMethodError'{0x000000008bb3afb8}: 'java.lang.Object java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(java.lang.Object, int, java.lang.Object)'> (0x000000008bb3afb8) 
+thrown [s\open\src\hotspot\share\interpreter\linkResolver.cpp, line 774]
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (20 events):
+Event: 0.409 Executing VM operation: HandshakeAllThreads (Deoptimize)
+Event: 0.409 Executing VM operation: HandshakeAllThreads (Deoptimize) done
+Event: 1.417 Executing VM operation: Cleanup
+Event: 1.417 Executing VM operation: Cleanup done
+Event: 2.425 Executing VM operation: Cleanup
+Event: 2.425 Executing VM operation: Cleanup done
+Event: 9.428 Executing VM operation: Cleanup
+Event: 9.429 Executing VM operation: Cleanup done
+Event: 12.430 Executing VM operation: Cleanup
+Event: 12.430 Executing VM operation: Cleanup done
+Event: 18.433 Executing VM operation: Cleanup
+Event: 18.433 Executing VM operation: Cleanup done
+Event: 25.436 Executing VM operation: Cleanup
+Event: 25.436 Executing VM operation: Cleanup done
+Event: 29.440 Executing VM operation: Cleanup
+Event: 29.440 Executing VM operation: Cleanup done
+Event: 310.129 Executing VM operation: HandshakeAllThreads (HandshakeForDeflation)
+Event: 310.130 Executing VM operation: HandshakeAllThreads (HandshakeForDeflation) done
+Event: 310.130 Executing VM operation: RendezvousGCThreads
+Event: 310.130 Executing VM operation: RendezvousGCThreads done
+
+Events (16 events):
+Event: 0.047 Thread 0x000001b22e2bf4f0 Thread added: 0x000001b22e2bf4f0
+Event: 0.080 Thread 0x000001b24b24c9c0 Thread added: 0x000001b24b24c9c0
+Event: 0.080 Thread 0x000001b24b24d030 Thread added: 0x000001b24b24d030
+Event: 0.080 Thread 0x000001b24b2554a0 Thread added: 0x000001b24b2554a0
+Event: 0.081 Thread 0x000001b24b255b10 Thread added: 0x000001b24b255b10
+Event: 0.081 Thread 0x000001b24b25ffe0 Thread added: 0x000001b24b25ffe0
+Event: 0.081 Thread 0x000001b24b26fb80 Thread added: 0x000001b24b26fb80
+Event: 0.081 Thread 0x000001b24b271f60 Thread added: 0x000001b24b271f60
+Event: 0.081 Thread 0x000001b24b275350 Thread added: 0x000001b24b275350
+Event: 0.119 Thread 0x000001b24b4bdc00 Thread added: 0x000001b24b4bdc00
+Event: 0.127 Thread 0x000001b24b4caec0 Thread added: 0x000001b24b4caec0
+Event: 0.405 Thread 0x000001b24b6f5160 Thread added: 0x000001b24b6f5160
+Event: 0.531 Thread 0x000001b24b895830 Thread added: 0x000001b24b895830
+Event: 0.875 Thread 0x000001b29147fc10 Thread added: 0x000001b29147fc10
+Event: 1.464 Thread 0x000001b29147fc10 Thread exited: 0x000001b29147fc10
+Event: 1.464 Thread 0x000001b24b895830 Thread exited: 0x000001b24b895830
+
+
+Dynamic libraries:
+0x00007ff6507c0000 - 0x00007ff6507d0000 	C:\Program Files\Java\jdk-22\bin\java.exe
+0x00007ffd9a080000 - 0x00007ffd9a2e6000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffd994c0000 - 0x00007ffd99589000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffd977f0000 - 0x00007ffd97bbc000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffd97cf0000 - 0x00007ffd97e3b000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffd77900000 - 0x00007ffd77917000 	C:\Program Files\Java\jdk-22\bin\jli.dll
+0x00007ffd778e0000 - 0x00007ffd778fb000 	C:\Program Files\Java\jdk-22\bin\VCRUNTIME140.dll
+0x00007ffd99020000 - 0x00007ffd990d2000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffd985f0000 - 0x00007ffd98699000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffd990e0000 - 0x00007ffd99186000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffd99cf0000 - 0x00007ffd99e06000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffd99a90000 - 0x00007ffd99c5a000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffd7e0d0000 - 0x00007ffd7e36a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.3912_none_3e07963ce335137e\COMCTL32.dll
+0x00007ffd97640000 - 0x00007ffd97667000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffd99a60000 - 0x00007ffd99a8b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffd97450000 - 0x00007ffd97582000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffd97590000 - 0x00007ffd97633000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffd84c80000 - 0x00007ffd84c8b000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffd99590000 - 0x00007ffd995c0000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffd778d0000 - 0x00007ffd778dc000 	C:\Program Files\Java\jdk-22\bin\vcruntime140_1.dll
+0x00007ffd6c2d0000 - 0x00007ffd6c35e000 	C:\Program Files\Java\jdk-22\bin\msvcp140.dll
+0x00007ffd20350000 - 0x00007ffd21097000 	C:\Program Files\Java\jdk-22\bin\server\jvm.dll
+0x00007ffd98860000 - 0x00007ffd988d4000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffd97060000 - 0x00007ffd970be000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffd915d0000 - 0x00007ffd91606000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffd97040000 - 0x00007ffd97054000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffd95fd0000 - 0x00007ffd95fea000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffd77760000 - 0x00007ffd7776a000 	C:\Program Files\Java\jdk-22\bin\jimage.dll
+0x00007ffd94ad0000 - 0x00007ffd94d11000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffd996d0000 - 0x00007ffd99a54000 	C:\WINDOWS\System32\combase.dll
+0x00007ffd99190000 - 0x00007ffd99270000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffd78840000 - 0x00007ffd78879000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffd97c50000 - 0x00007ffd97ce9000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffd771d0000 - 0x00007ffd771ee000 	C:\Program Files\Java\jdk-22\bin\java.dll
+0x00007ffd97ec0000 - 0x00007ffd985ed000 	C:\WINDOWS\System32\SHELL32.dll
+0x00007ffd97670000 - 0x00007ffd977e4000 	C:\WINDOWS\System32\wintypes.dll
+0x00007ffd986a0000 - 0x00007ffd9883f000 	C:\WINDOWS\System32\ole32.dll
+0x00007ffd94e60000 - 0x00007ffd956b6000 	C:\WINDOWS\SYSTEM32\windows.storage.dll
+0x00007ffd995d0000 - 0x00007ffd996bf000 	C:\WINDOWS\System32\SHCORE.dll
+0x00007ffd99c60000 - 0x00007ffd99cc9000 	C:\WINDOWS\System32\shlwapi.dll
+0x00007ffd97120000 - 0x00007ffd9714f000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007ffd24c60000 - 0x00007ffd24d37000 	C:\Program Files\Java\jdk-22\bin\jsvml.dll
+0x00007ffd77740000 - 0x00007ffd77750000 	C:\Program Files\Java\jdk-22\bin\net.dll
+0x00007ffd96540000 - 0x00007ffd965aa000 	C:\WINDOWS\system32\mswsock.dll
+0x00007ffd77190000 - 0x00007ffd771a6000 	C:\Program Files\Java\jdk-22\bin\nio.dll
+0x00007ffd771b0000 - 0x00007ffd771c7000 	C:\Program Files\Java\jdk-22\bin\zip.dll
+0x00007ffd6d520000 - 0x00007ffd6d62c000 	C:\Windows\System32\opengl32.dll
+0x00007ffd6d4b0000 - 0x00007ffd6d4dd000 	C:\WINDOWS\SYSTEM32\GLU32.dll
+0x00007ffd91810000 - 0x00007ffd91857000 	C:\WINDOWS\SYSTEM32\dxcore.dll
+0x00007ffd443d0000 - 0x00007ffd44625000 	C:\Users\Domgu\.javacpp\cache\Memory Game-1.0-SNAPSHOT-all.jar\com\raylib\windows-x86_64\jniRaylib.dll
+0x000001b22e3c0000 - 0x000001b22e3c3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-locale-l1-1-0.dll
+0x000001b22e3d0000 - 0x000001b22e3d4000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-string-l1-1-0.dll
+0x000001b22e3e0000 - 0x000001b22e3e4000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-stdio-l1-1-0.dll
+0x000001b24b7b0000 - 0x000001b24b7b5000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-math-l1-1-0.dll
+0x000001b24b7c0000 - 0x000001b24b7c3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-heap-l1-1-0.dll
+0x000001b24b7d0000 - 0x000001b24b7d4000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-runtime-l1-1-0.dll
+0x000001b24bfe0000 - 0x000001b24bfe4000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-convert-l1-1-0.dll
+0x000001b24bff0000 - 0x000001b24bff3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-environment-l1-1-0.dll
+0x000001b291000000 - 0x000001b291003000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-time-l1-1-0.dll
+0x000001b291010000 - 0x000001b291013000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-filesystem-l1-1-0.dll
+0x000001b291020000 - 0x000001b291023000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-utility-l1-1-0.dll
+0x000001b291030000 - 0x000001b291035000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-multibyte-l1-1-0.dll
+0x000001b291040000 - 0x000001b291043000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-conio-l1-1-0.dll
+0x000001b291050000 - 0x000001b29105f000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-private-l1-1-0.dll
+0x000001b291060000 - 0x000001b291063000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-crt-process-l1-1-0.dll
+0x000001b291070000 - 0x000001b291074000 	C:\Program Files\Java\jdk-22\bin\api-ms-win-core-console-l1-2-0.dll
+0x000001b291080000 - 0x000001b291083000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-string-l1-1-0.dll
+0x000001b291090000 - 0x000001b291093000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-errorhandling-l1-1-0.dll
+0x000001b2910a0000 - 0x000001b2910a3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-timezone-l1-1-0.dll
+0x000001b2910b0000 - 0x000001b2910b4000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-file-l1-1-0.dll
+0x000001b2910c0000 - 0x000001b2910c3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-namedpipe-l1-1-0.dll
+0x000001b2910d0000 - 0x000001b2910d3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-handle-l1-1-0.dll
+0x000001b2910e0000 - 0x000001b2910e3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-file-l2-1-0.dll
+0x000001b2910f0000 - 0x000001b2910f3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-heap-l1-1-0.dll
+0x000001b291100000 - 0x000001b291103000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-libraryloader-l1-1-0.dll
+0x000001b291110000 - 0x000001b291113000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-synch-l1-1-0.dll
+0x000001b291120000 - 0x000001b291123000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-processthreads-l1-1-0.dll
+0x000001b291130000 - 0x000001b291133000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-processenvironment-l1-1-0.dll
+0x000001b291140000 - 0x000001b291143000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-datetime-l1-1-0.dll
+0x000001b291150000 - 0x000001b291153000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-localization-l1-2-0.dll
+0x000001b291160000 - 0x000001b291163000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-sysinfo-l1-1-0.dll
+0x000001b291170000 - 0x000001b291173000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-synch-l1-2-0.dll
+0x000001b291180000 - 0x000001b291183000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-console-l1-1-0.dll
+0x000001b291190000 - 0x000001b291193000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-debug-l1-1-0.dll
+0x000001b292170000 - 0x000001b292173000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-rtlsupport-l1-1-0.dll
+0x000001b292180000 - 0x000001b292183000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-processthreads-l1-1-1.dll
+0x000001b292190000 - 0x000001b292193000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-file-l1-2-0.dll
+0x000001b2921a0000 - 0x000001b2921a3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-profile-l1-1-0.dll
+0x000001b2921b0000 - 0x000001b2921b3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-memory-l1-1-0.dll
+0x000001b2921c0000 - 0x000001b2921c3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-util-l1-1-0.dll
+0x000001b2921d0000 - 0x000001b2921d3000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\api-ms-win-core-interlocked-l1-1-0.dll
+0x00007ffd48510000 - 0x00007ffd48602000 	C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64\ucrtbase.dll
+0x00007ffd8cae0000 - 0x00007ffd8cae9000 	C:\Windows\System32\msvcp140_1.dll
+0x00007ffd77200000 - 0x00007ffd7724d000 	C:\Windows\System32\concrt140.dll
+0x00007ffd86150000 - 0x00007ffd86180000 	C:\Windows\System32\vcomp140.dll
+0x00007ffd6c390000 - 0x00007ffd6c433000 	C:\Windows\System32\libomp140.x86_64.dll
+0x00007ffd99ce0000 - 0x00007ffd99ce8000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffd69820000 - 0x00007ffd6986b000 	C:\WINDOWS\SYSTEM32\dinput8.dll
+0x00007ffd787a0000 - 0x00007ffd787b2000 	C:\WINDOWS\SYSTEM32\xinput1_4.dll
+0x00007ffd96d30000 - 0x00007ffd96d87000 	C:\WINDOWS\SYSTEM32\cfgmgr32.dll
+0x00007ffd96d90000 - 0x00007ffd96dbd000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x00007ffd91a30000 - 0x00007ffd91a66000 	C:\WINDOWS\SYSTEM32\dwmapi.dll
+0x00007ffd7ecd0000 - 0x00007ffd7eeb1000 	C:\WINDOWS\SYSTEM32\inputhost.dll
+0x00007ffd911f0000 - 0x00007ffd91316000 	C:\WINDOWS\SYSTEM32\CoreMessaging.dll
+0x00007ffd91710000 - 0x00007ffd917bf000 	C:\WINDOWS\system32\uxtheme.dll
+0x00007ffd99e10000 - 0x00007ffd99f6f000 	C:\WINDOWS\System32\MSCTF.dll
+0x00007ffd96800000 - 0x00007ffd9680c000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.DLL
+0x00007ffd956c0000 - 0x00007ffd956cf000 	C:\WINDOWS\SYSTEM32\HID.DLL
+0x00007ffd98ae0000 - 0x00007ffd98f66000 	C:\WINDOWS\System32\SETUPAPI.DLL
+0x00007ffd97bc0000 - 0x00007ffd97c40000 	C:\WINDOWS\System32\WINTRUST.dll
+0x00007ffd972d0000 - 0x00007ffd97447000 	C:\WINDOWS\System32\CRYPT32.dll
+0x00007ffd96850000 - 0x00007ffd96863000 	C:\WINDOWS\SYSTEM32\MSASN1.dll
+0x00007ffd91860000 - 0x00007ffd918c0000 	C:\WINDOWS\SYSTEM32\directxdatabasehelper.dll
+0x00007ffd70e70000 - 0x00007ffd70e8a000 	C:\WINDOWS\SYSTEM32\windows.staterepositorycore.dll
+0x00007ffd2dd90000 - 0x00007ffd2f157000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778\igxelpicd64.dll
+0x00007ffd918d0000 - 0x00007ffd91a03000 	C:\WINDOWS\SYSTEM32\dxgi.dll
+0x00007ffd77860000 - 0x00007ffd77883000 	C:\WINDOWS\SYSTEM32\d3d12.dll
+0x00007ffd46810000 - 0x00007ffd46959000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778\igdml64.dll
+0x00007ffd8c490000 - 0x00007ffd8c8d2000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778\igdgmm64.dll
+0x00007ffd8c310000 - 0x00007ffd8c336000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778\igc64.dll
+0x00007ffd88350000 - 0x00007ffd8c2e9000 	C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778\igc1464.dll
+0x00007ffd82590000 - 0x00007ffd826dd000 	C:\WINDOWS\SYSTEM32\textinputframework.dll
+0x00007ffd8eb00000 - 0x00007ffd8ede3000 	C:\WINDOWS\SYSTEM32\CoreUIComponents.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-22\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.3912_none_3e07963ce335137e;C:\Program Files\Java\jdk-22\bin\server;C:\Users\Domgu\.javacpp\cache\Memory Game-1.0-SNAPSHOT-all.jar\com\raylib\windows-x86_64;C:\Program Files (x86)\Windows Kits\10\Redist\ucrt\DLLs\x64;C:\WINDOWS\System32\DriverStore\FileRepository\iigd_dch.inf_amd64_0cfb7a84e9f43778
+
+VM Arguments:
+jvm_args: -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: main.Main
+java_class_path (initial): c:\Users\Domgu\OneDrive\Desktop\Java Projects\Games\Memory Game\build\classes\java\main;c:\Users\Domgu\OneDrive\Desktop\Java Projects\Games\Memory Game\build\libs\Memory Game-1.0-SNAPSHOT-all.jar;c:\Users\Domgu\OneDrive\Desktop\Java Projects\Games\Memory Game\build\libs\Memory Game-1.0-SNAPSHOT.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+   size_t InitialHeapSize                          = 130023424                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2076180480                                {product} {ergonomic}
+   size_t MaxNewSize                               = 1245708288                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 2076180480                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk-22
+PATH=C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Windows\System32\WindowsPowerShell\v1.0;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Java\jdk-22\bin;C:\Program Files\CMake\bin;C:\Users\Domgu\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Domgu\AppData\Local\Programs\Python\Python311\;C:\Users\Domgu\AppData\Local\Microsoft\WindowsApps;C:\Users\Domgu\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Domgu\AppData\Local\Programs\Fiddler;C:\Users\Domgu\AppData\Local\Microsoft\WindowsApps;C:\Users\Domgu\AppData\Roaming\npm;C:\cygwin64\bin;C:\Users\Domgu\AppData\Local\GitHubDesktop\bin;C:\Users\Domgu\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-14.1.0-x86_64-pc-windows-msvc;C:\tools\neovim\nvim-win64\bin;C:\msys64\ucrt64\bin;c:\Users\Domgu\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+USERNAME=Domgu
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+TMP=C:\Users\Domgu\AppData\Local\Temp
+TEMP=C:\Users\Domgu\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.3912)
+OS uptime: 6 days 1:59 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 140 stepping 1 microcode 0xbc, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, sha, fma, vzeroupper, avx512_vpopcntdq, avx512_vpclmulqdq, avx512_vaes, avx512_vnni, clflush, clflushopt, clwb, avx512_vbmi2, avx512_vbmi, hv, rdtscp, rdpid, fsrm, gfni, avx512_bitalg, f16c, cet_ibt, cet_ss, avx512_ifma
+Processor Information for all 8 processors :
+  Max Mhz: 2419, Current Mhz: 2419, Mhz Limit: 2419
+
+Memory: 4k page, system-wide physical 7915M (1304M free)
+TotalPageFile size 19022M (AvailPageFile size 8393M)
+current process WorkingSet (physical memory assigned to process): 111M, peak: 181M
+current process commit charge ("private bytes"): 242M, peak: 274M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (22.0.1+8-16) for windows-amd64 JRE (22.0.1+8-16), built on 2024-03-12T10:33:16Z by "mach5one" with MS VC++ 17.6 (VS2022)
+
+END.
