@@ -10,7 +10,7 @@ import com.raylib.Raylib.Rectangle;
 import com.raylib.Raylib.Vector2;
 
 public class Button {
-    public Rectangle rect; // TODO return to private
+    private Rectangle rect;
     private Color normalColor;
     private Color hoverColor;
     private Color pressedColor;
@@ -150,7 +150,8 @@ public class Button {
             float iconH = texH * finalScale;
             float iconX = rect.x() + (buttonW - iconW) / 2f;
             float iconY = rect.y() + (buttonH - iconH) / 2f;
-            com.raylib.Raylib.DrawTextureEx(iconTexture, new Vector2().x(iconX).y(iconY), 0f, finalScale,
+            Vector2 iconPos = new Vector2().x(iconX).y(iconY);
+            com.raylib.Raylib.DrawTextureEx(iconTexture, iconPos, 0f, finalScale,
                     com.raylib.Colors.WHITE);
         }
         // Draw text if set

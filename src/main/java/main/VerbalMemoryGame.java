@@ -1,19 +1,28 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
+import static com.raylib.Raylib.BeginDrawing;
+import static com.raylib.Raylib.ClearBackground;
+import static com.raylib.Raylib.DrawText;
+import static com.raylib.Raylib.EndDrawing;
+import static com.raylib.Raylib.GetScreenHeight;
+import static com.raylib.Raylib.GetScreenWidth;
+import static com.raylib.Raylib.IsKeyPressed;
+import static com.raylib.Raylib.KEY_ENTER;
+import static com.raylib.Raylib.MeasureText;
+
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
-public class VerbalMemoryGame extends Game {
-    private JLabel wordLabel;
-    private JButton seenButton, newButton;
-    private JPanel buttonPanel;
+import com.raylib.Raylib.Color;
+
+public class VerbalMemoryGame extends MemoryGame {
+    private Color background = new Color().r((byte) 62).g((byte) 136).b((byte) 210).a((byte) 255);
+    private Color darkGray = new Color().r((byte) 80).g((byte) 80).b((byte) 80).a((byte) 255);
+    private Color maroon = new Color().r((byte) 128).g((byte) 0).b((byte) 0).a((byte) 255);
+    private Color black = new Color().r((byte) 0).g((byte) 0).b((byte) 0).a((byte) 255);
+    private Color lightGray = new Color().r((byte) 200).g((byte) 200).b((byte) 200).a((byte) 255);
+    private Color darkGreen = new Color().r((byte) 0).g((byte) 100).b((byte) 0).a((byte) 255);
     private Set<String> seenWords;
     private String currentWord;
     private int lives;
@@ -25,17 +34,24 @@ public class VerbalMemoryGame extends Game {
             "garden", "hat", "ice", "jacket", "key", "lamp", "mirror", "nest", "ocean", "pencil",
             "quilt", "road", "star", "train", "unicorn", "vase", "whale", "x-ray", "yogurt", "zipper"
     };
-    private JLabel statusLabel;
+    private boolean showStartScreen = true;
+    private Button seenButton;
+    private Button newButton;
 
     public VerbalMemoryGame() {
-        super("VerbalMemoryGame");
-        titleScreen(gameName,
-                "You will be shown word, one at a time. If you've seen the word during the test, click SEEN. If it's a new word, click NEW.",
-                null);
+        super((int) (GetScreenWidth() / 2));
+        random = new Random();
+        seenButton = new Button(350, 500, 200, 80, maroon, maroon, maroon);
+        seenButton.setText("SEEN", 36, lightGray);
+        newButton = new Button(650, 500, 200, 80, darkGreen, darkGreen, darkGreen);
+        newButton.setText("NEW", 36, lightGray);
     }
 
-    private void updateStatusLabel() {
-        statusLabel.setText("Score: " + score + "    Lives: " + lives);
+    private void startGame() {
+        seenWords = new HashSet<>();
+        score = 0;
+        lives = 3;
+        nextWord();
     }
 
     private void nextWord() {
@@ -50,8 +66,6 @@ public class VerbalMemoryGame extends Game {
             } while (seenWords.contains(newWord));
             currentWord = newWord;
         }
-        wordLabel.setText(currentWord);
-        updateStatusLabel();
     }
 
     private void handleSeen() {
@@ -60,9 +74,8 @@ public class VerbalMemoryGame extends Game {
             nextWord();
         } else {
             lives--;
-            updateStatusLabel();
             if (lives <= 0) {
-                gameOver();
+                isGameOver = true;
             } else {
                 nextWord();
             }
@@ -76,9 +89,8 @@ public class VerbalMemoryGame extends Game {
             nextWord();
         } else {
             lives--;
-            updateStatusLabel();
             if (lives <= 0) {
-                gameOver();
+                isGameOver = true;
             } else {
                 nextWord();
             }
@@ -86,60 +98,85 @@ public class VerbalMemoryGame extends Game {
     }
 
     @Override
-    public void onGameOver() {
-        wordLabel.setText("");
-        seenButton.setEnabled(false);
-        newButton.setEnabled(false);
-        removeAll();
-        revalidate();
-        repaint();
-    }
-
-    @Override
-    public void onRestartGame() {
-        // TODO: probably can do this better
-        startGame();
-        // add(wordLabel, BorderLayout.CENTER);
-        // add(buttonPanel, BorderLayout.SOUTH);
-        // seenWords.clear();
-        // score = 0;
-        // lives = 3;
-        // seenButton.setEnabled(true);
-        // newButton.setEnabled(true);
-        // updateStatusLabel();
-        // nextWord();
-        // revalidate();
-        // repaint();
-    }
-
-    @Override
-    public void startGame() {
-        setLayout(new BorderLayout());
-        wordLabel = new JLabel("", SwingConstants.CENTER);
-        wordLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        add(wordLabel, BorderLayout.CENTER);
-
-        buttonPanel = new JPanel();
-        seenButton = new JButton("SEEN");
-        newButton = new JButton("NEW");
-        buttonPanel.add(seenButton);
-        buttonPanel.add(newButton);
-        add(buttonPanel, BorderLayout.SOUTH);
-
-        seenWords = new HashSet<>();
-        random = new Random();
+    public void reset() {
+        // Reset all game state for a new round
+        isGameOver = false;
+        shouldReturnToTitle = false;
+        showStartScreen = true;
         score = 0;
         lives = 3;
-
-        statusLabel = new JLabel();
-        statusLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-        statusLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(statusLabel, BorderLayout.NORTH);
-
-        nextWord();
-        updateStatusLabel();
-
-        seenButton.addActionListener(_ -> handleSeen());
-        newButton.addActionListener(_ -> handleNew());
+        seenWords = new HashSet<>();
+        currentWord = null;
+        System.out.println("hello");
     }
+
+    @Override
+    public void drawScene() {
+        BeginDrawing();
+        ClearBackground(background);
+        int windowWidth = GetScreenWidth();
+        int windowHeight = GetScreenHeight();
+        int centerX = windowWidth / 2;
+        if (showStartScreen) {
+            DrawText("Verbal Memory Game", centerX - MeasureText("Verbal Memory Game", 40) / 2, 100, 40, darkGray);
+            DrawText("You will be shown words, one at a time.",
+                    centerX - MeasureText("You will be shown words, one at a time.", 24) / 2, 200, 24, darkGray);
+            DrawText("If you've seen the word during the test, press SEEN.",
+                    centerX - MeasureText("If you've seen the word during the test, press SEEN.", 24) / 2, 240, 24,
+                    darkGray);
+            DrawText("If it's a new word, press NEW.",
+                    centerX - MeasureText("If it's a new word, press NEW.", 24) / 2,
+                    280, 24, darkGray);
+            DrawText("Press ENTER to start", centerX - MeasureText("Press ENTER to start", 28) / 2, 350, 28,
+                    maroon);
+        } else if (isGameOver) {
+            drawEndScreen(centerX, "Game Over!", background);
+        } else {
+            DrawText(currentWord, centerX - MeasureText(currentWord, 48) / 2, 200, 48, black);
+            DrawText("Score: " + score + "    Lives: " + lives,
+                    centerX - MeasureText("Score: " + score + "    Lives: " + lives, 32) / 2, 100, 32, darkGray);
+            // Center buttons
+            int buttonY = windowHeight - 200;
+            int buttonSpacing = 100;
+            int buttonWidth = 200;
+            int seenX = centerX - buttonWidth - buttonSpacing / 2;
+            int newX = centerX + buttonSpacing / 2;
+            seenButton.setPosition(seenX, buttonY);
+            newButton.setPosition(newX, buttonY);
+            seenButton.draw();
+            newButton.draw();
+        }
+
+        EndDrawing();
+
+    }
+
+    @Override
+    public void updateScene() {
+        if (showStartScreen || isGameOver)
+            return;
+        seenButton.update();
+        newButton.update();
+    }
+
+    @Override
+    public void processInputScene() {
+        if (isGameOver) {
+            handleNameInput();
+            updateEndScreenButtons();
+            handleEndScreenButtonActions();
+        } else if (showStartScreen) {
+            if (IsKeyPressed(KEY_ENTER)) {
+                startGame();
+                showStartScreen = false;
+            }
+        } else {
+            if (seenButton.isClicked()) {
+                handleSeen();
+            } else if (newButton.isClicked()) {
+                handleNew();
+            }
+        }
+    }
+
 }

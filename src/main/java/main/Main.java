@@ -18,8 +18,8 @@ public class Main {
 
         // Create all screens
         TitleScreen titleScreen = new TitleScreen();
-        VerbalMemoryGame2 verbalMemoryGame2 = new VerbalMemoryGame2();
-        SequenceGame2 sequenceGame2 = new SequenceGame2();
+        VerbalMemoryGame verbalMemoryGame = new VerbalMemoryGame();
+        SequenceGame sequenceGame = new SequenceGame();
 
         Scene currentScene = Scene.TITLE;
 
@@ -31,27 +31,27 @@ public class Main {
                     titleScreen.draw();
                     if (titleScreen.isVerbalMemorySelected()) {
                         currentScene = Scene.VERBAL_MEMORY_GAME;
-                        verbalMemoryGame2.reset();
+                        verbalMemoryGame.reset();
                     } else if (titleScreen.isSequenceGameSelected()) {
                         currentScene = Scene.SEQUENCE_GAME;
-                        sequenceGame2.reset();
+                        sequenceGame.reset();
                     }
                     break;
                 case VERBAL_MEMORY_GAME:
-                    verbalMemoryGame2.updateScene();
-                    verbalMemoryGame2.processInputScene();
-                    verbalMemoryGame2.drawScene();
-                    if (verbalMemoryGame2.shouldReturnToTitle()) {
+                    verbalMemoryGame.updateScene();
+                    verbalMemoryGame.processInputScene();
+                    verbalMemoryGame.drawScene();
+                    if (verbalMemoryGame.shouldReturnToTitle()) {
                         currentScene = Scene.TITLE;
                         titleScreen.reset();
                     }
                     break;
                 case SEQUENCE_GAME:
-                    sequenceGame2.updateScene();
-                    sequenceGame2.processInputScene();
-                    sequenceGame2.drawScene();
+                    sequenceGame.updateScene();
+                    sequenceGame.processInputScene();
+                    sequenceGame.drawScene();
                     // Only return to title if SequenceGame2 signals it
-                    if (sequenceGame2.shouldReturnToTitle()) {
+                    if (sequenceGame.shouldReturnToTitle()) {
                         currentScene = Scene.TITLE;
                         titleScreen.reset();
                     }

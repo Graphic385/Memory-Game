@@ -18,12 +18,17 @@ public class TitleScreen {
     Button sequencyMemory, verbalMemory;
     private boolean verbalMemorySelected = false;
     private boolean sequenceGameSelected = false;
+    private float scrollOffset = 0f; // Horizontal scroll offset
+    private final int buttonY = 400; // All buttons at same y-level
+    private final int buttonSpacing = 40; // Space between buttons
+    private final int buttonWidth = 200; // Button width
 
     public TitleScreen() {
         backgroundColour = new Color().r((byte) 62).g((byte) 136).b((byte) 210).a((byte) 255);
         buttonOutline = new Color().r((byte) 53).g((byte) 117).b((byte) 194).a((byte) 255);
-        sequencyMemory = new Button(380, 400, 200, 200, backgroundColour);
-        verbalMemory = new Button(600, 400, 200, 200, backgroundColour);
+        // Place buttons at same y-level, x will be set dynamically
+        sequencyMemory = new Button(0, buttonY, buttonWidth, 200, backgroundColour);
+        verbalMemory = new Button(0, buttonY, buttonWidth, 200, backgroundColour);
         verbalMemory.addOutline(10, buttonOutline);
         sequencyMemory.addOutline(10, buttonOutline);
         sequencyMemory.addImageIcon(LoadTexture("resources/sequenceMemory.png"), 0.75f);
@@ -41,18 +46,24 @@ public class TitleScreen {
     }
 
     public void update() {
+        // Handle horizontal mouse wheel scroll (Raylib: GetMouseWheelMoveV().x)
+        float wheelMove = com.raylib.Raylib.GetMouseWheelMoveV().x();
+        if (wheelMove != 0) {
+            scrollOffset -= wheelMove * 40; // Adjust scroll speed as needed
+        }
+        int x = (int) -scrollOffset + buttonSpacing;
         for (Button b : buttons) {
+            b.setPosition(x, buttonY);
             b.update();
+            x += buttonWidth + buttonSpacing;
         }
         // Only set flags, do not transition scenes here
         verbalMemorySelected = false;
         sequenceGameSelected = false;
         if (sequencyMemory.isClicked()) {
-            System.out.println("sequence clicked");
             sequenceGameSelected = true;
         }
         if (verbalMemory.isClicked()) {
-            System.out.println("verbalclicked");
             verbalMemorySelected = true;
         }
     }

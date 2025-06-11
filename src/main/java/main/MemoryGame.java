@@ -145,13 +145,61 @@ public abstract class MemoryGame {
         }
         String className = this.getClass().getSimpleName();
         String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
-        try (FileWriter fw = new FileWriter(fileName, true); BufferedWriter bw = new BufferedWriter(fw)) {
-            System.out.println("score is " + score);
-            bw.write(playerName + ":" + score + "\n");
-            scoreSaved = true;
-            saveMessage = "Score saved!";
+        // Ensure the file exists before reading
+        java.io.File file = new java.io.File(fileName);
+        try {
+            file.getParentFile().mkdirs(); // Ensure parent directories exist
+            file.createNewFile(); // Create file if it doesn't exist
         } catch (IOException e) {
+            saveMessage = "Error creating leaderboard file.";
+            return;
+        }
+        List<String> lines = new ArrayList<>();
+        boolean found = false;
+        boolean updated = false;
+        try {
+            // Read all lines
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] parts = line.split(":");
+                    if (parts.length == 2 && parts[0].equals(playerName)) {
+                        int oldScore = Integer.parseInt(parts[1]);
+                        found = true;
+                        if (score > oldScore) {
+                            lines.add(playerName + ":" + score);
+                            updated = true;
+                        } else {
+                            lines.add(line); // keep old score
+                        }
+                    } else {
+                        lines.add(line);
+                    }
+                }
+            }
+            if (!found) {
+                lines.add(playerName + ":" + score);
+                updated = true;
+            }
+            // Write all lines back
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, false))) {
+                for (String l : lines) {
+                    bw.write(l + "\n");
+                }
+            }
+            scoreSaved = true;
+            if (found && updated) {
+                saveMessage = "Score updated!";
+            } else if (!found) {
+                saveMessage = "Score saved!";
+            } else {
+                saveMessage = "Existing score is higher or equal.";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
             saveMessage = "Error saving score.";
+        } catch (NumberFormatException e) {
+            saveMessage = "Corrupt leaderboard file.";
         }
     }
 
