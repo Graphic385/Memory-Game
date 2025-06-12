@@ -10,7 +10,12 @@ import static com.raylib.Raylib.IsKeyPressed;
 import static com.raylib.Raylib.KEY_ENTER;
 import static com.raylib.Raylib.MeasureText;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -27,13 +32,7 @@ public class VerbalMemoryGame extends MemoryGame {
     private String currentWord;
     private int lives;
     private Random random;
-    private String[] wordBank = {
-            "apple", "banana", "car", "dog", "elephant", "flower", "guitar", "house", "island", "jungle",
-            "kite", "lemon", "mountain", "notebook", "orange", "piano", "queen", "river", "sun", "tree",
-            "umbrella", "violin", "window", "xylophone", "yacht", "zebra", "cloud", "desk", "engine", "forest",
-            "garden", "hat", "ice", "jacket", "key", "lamp", "mirror", "nest", "ocean", "pencil",
-            "quilt", "road", "star", "train", "unicorn", "vase", "whale", "x-ray", "yogurt", "zipper"
-    };
+    private ArrayList<String> wordList;
     private boolean showStartScreen = true;
     private Button seenButton;
     private Button newButton;
@@ -45,6 +44,23 @@ public class VerbalMemoryGame extends MemoryGame {
         seenButton.setText("SEEN", 36, lightGray);
         newButton = new Button(650, 500, 200, 80, darkGreen, darkGreen, darkGreen);
         newButton.setText("NEW", 36, lightGray);
+        loadWordsFromFile();
+    }
+
+    private void loadWordsFromFile() {
+        wordList = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("resources/10000-english-no-swears.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    wordList.add(line.trim());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Fallback: add a default word if file fails to load
+            wordList.add("default");
+        }
     }
 
     private void startGame() {
@@ -62,7 +78,7 @@ public class VerbalMemoryGame extends MemoryGame {
         } else {
             String newWord;
             do {
-                newWord = wordBank[random.nextInt(wordBank.length)];
+                newWord = wordList.get(random.nextInt(wordList.size()));
             } while (seenWords.contains(newWord));
             currentWord = newWord;
         }

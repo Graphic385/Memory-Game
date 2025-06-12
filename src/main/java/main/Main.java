@@ -12,7 +12,8 @@ public class Main {
         SEQUENCE_GAME,
         REACTION_TIME_TEST,
         NUMBER_MEMORY_GAME, // Add new scene
-        AIM_TRAINER_GAME // Add new scene
+        AIM_TRAINER_GAME, // Add new scene
+        TYPING_TEST_GAME // Add new scene
     }
 
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class Main {
         ReactionTimeTest reactionTimeTest = new ReactionTimeTest();
         NumberMemoryGame numberMemoryGame = new NumberMemoryGame(); // Add new game
         AimTrainerGame aimTrainerGame = new AimTrainerGame(); // Add new game
+        TypingTestGame typingTestGame = new TypingTestGame(); // Add new game
 
         Scene currentScene = Scene.TITLE;
 
@@ -50,6 +52,9 @@ public class Main {
                     } else if (titleScreen.isAimTrainerSelected()) {
                         currentScene = Scene.AIM_TRAINER_GAME;
                         aimTrainerGame.reset();
+                    } else if (titleScreen.isTypingTestSelected()) {
+                        currentScene = Scene.TYPING_TEST_GAME;
+                        typingTestGame.reset();
                     }
                     break;
                 case VERBAL_MEMORY_GAME:
@@ -93,6 +98,15 @@ public class Main {
                     aimTrainerGame.processInputScene();
                     aimTrainerGame.drawScene();
                     if (aimTrainerGame.shouldReturnToTitle()) {
+                        currentScene = Scene.TITLE;
+                        titleScreen.reset();
+                    }
+                    break;
+                case TYPING_TEST_GAME:
+                    typingTestGame.updateScene();
+                    typingTestGame.processInputScene();
+                    typingTestGame.drawScene();
+                    if (typingTestGame.shouldReturnToTitle()) {
                         currentScene = Scene.TITLE;
                         titleScreen.reset();
                     }
