@@ -24,6 +24,9 @@ public class Button {
     private String buttonText = null;
     private int textSize = 24;
     private Color textColor = com.raylib.Colors.WHITE;
+    private boolean isHighlighted = false;
+    private Color highlightColor = null;
+    private long highlightEndTime = 0;
 
     public Button(float x, float y, float width, float height, Color normal, Color hover, Color pressed) {
         rect = new Rectangle();
@@ -113,11 +116,43 @@ public class Button {
         rect.y(y);
     }
 
+    /**
+     * Temporarily highlights the button with the given color for the specified
+     * duration (in milliseconds).
+     */
+    public void highlight(Color color, int durationMs) {
+        this.isHighlighted = true;
+        this.highlightColor = color;
+        this.highlightEndTime = System.currentTimeMillis() + durationMs;
+    }
+
+    /**
+     * Highlights the button with the given color for just one draw call (frame).
+     * The highlight will be cleared automatically after draw().
+     */
+    public void highlightOnce(Color color) {
+        this.isHighlighted = true;
+        this.highlightColor = color;
+        this.highlightEndTime = -1; // Special value to indicate one-frame highlight
+    }
+
     public void draw() {
         Vector2 mouse = GetMousePosition();
         boolean mouseOver = mouse.x() >= rect.x() && mouse.x() <= rect.x() + rect.width() &&
                 mouse.y() >= rect.y() && mouse.y() <= rect.y() + rect.height();
         boolean mouseDown = IsMouseButtonDown(MOUSE_BUTTON_LEFT);
+        // Handle highlight timing
+        if (isHighlighted) {
+            if (highlightEndTime == -1) {
+                // One-frame highlight: clear after this draw
+                isHighlighted = false;
+                highlightColor = null;
+                highlightEndTime = 0;
+            } else if (System.currentTimeMillis() > highlightEndTime) {
+                isHighlighted = false;
+                highlightColor = null;
+            }
+        }
         // Draw outline if set
         if (outlineWidth > 0 && outlineColor != null) {
             Rectangle outlineRect = new Rectangle();
@@ -127,7 +162,10 @@ public class Button {
             outlineRect.height(rect.height() + 2 * outlineWidth);
             DrawRectangleRounded(outlineRect, 0.2f, 10, outlineColor);
         }
-        if (mouseOver && mouseDown) {
+        // Draw highlight if active
+        if (isHighlighted && highlightColor != null) {
+            DrawRectangleRounded(rect, 0.2f, 10, highlightColor);
+        } else if (mouseOver && mouseDown) {
             DrawRectangleRounded(rect, 0.2f, 10, pressedColor);
         } else if (mouseOver && hoverEnabled) {
             DrawRectangleRounded(rect, 0.2f, 10, hoverColor);

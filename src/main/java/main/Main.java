@@ -9,7 +9,8 @@ public class Main {
     enum Scene {
         TITLE,
         VERBAL_MEMORY_GAME,
-        SEQUENCE_GAME
+        SEQUENCE_GAME,
+        REACTION_TIME_TEST
     }
 
     public static void main(String[] args) {
@@ -20,6 +21,7 @@ public class Main {
         TitleScreen titleScreen = new TitleScreen();
         VerbalMemoryGame verbalMemoryGame = new VerbalMemoryGame();
         SequenceGame sequenceGame = new SequenceGame();
+        ReactionTimeTest reactionTimeTest = new ReactionTimeTest();
 
         Scene currentScene = Scene.TITLE;
 
@@ -35,6 +37,9 @@ public class Main {
                     } else if (titleScreen.isSequenceGameSelected()) {
                         currentScene = Scene.SEQUENCE_GAME;
                         sequenceGame.reset();
+                    } else if (titleScreen.isReactionTimeSelected()) {
+                        currentScene = Scene.REACTION_TIME_TEST;
+                        reactionTimeTest.reset();
                     }
                     break;
                 case VERBAL_MEMORY_GAME:
@@ -50,8 +55,16 @@ public class Main {
                     sequenceGame.updateScene();
                     sequenceGame.processInputScene();
                     sequenceGame.drawScene();
-                    // Only return to title if SequenceGame2 signals it
                     if (sequenceGame.shouldReturnToTitle()) {
+                        currentScene = Scene.TITLE;
+                        titleScreen.reset();
+                    }
+                    break;
+                case REACTION_TIME_TEST:
+                    reactionTimeTest.updateScene();
+                    reactionTimeTest.processInputScene();
+                    reactionTimeTest.drawScene();
+                    if (reactionTimeTest.shouldReturnToTitle()) {
                         currentScene = Scene.TITLE;
                         titleScreen.reset();
                     }

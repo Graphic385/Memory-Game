@@ -15,9 +15,10 @@ public class TitleScreen {
     Color buttonHoverColour;
     Color buttonClickColour;
     Button[] buttons;
-    Button sequencyMemory, verbalMemory;
+    Button sequencyMemory, verbalMemory, reactionTimeTest;
     private boolean verbalMemorySelected = false;
     private boolean sequenceGameSelected = false;
+    private boolean reactionTimeSelected = false;
     private float scrollOffset = 0f; // Horizontal scroll offset
     private final int buttonY = 400; // All buttons at same y-level
     private final int buttonSpacing = 40; // Space between buttons
@@ -29,11 +30,14 @@ public class TitleScreen {
         // Place buttons at same y-level, x will be set dynamically
         sequencyMemory = new Button(0, buttonY, buttonWidth, 200, backgroundColour);
         verbalMemory = new Button(0, buttonY, buttonWidth, 200, backgroundColour);
+        reactionTimeTest = new Button(0, buttonY, buttonWidth, 200, backgroundColour);
         verbalMemory.addOutline(10, buttonOutline);
         sequencyMemory.addOutline(10, buttonOutline);
+        reactionTimeTest.addOutline(10, buttonOutline);
         sequencyMemory.addImageIcon(LoadTexture("resources/sequenceMemory.png"), 0.75f);
         verbalMemory.addImageIcon(LoadTexture("resources/verbalMemory.png"), 0.75f);
-        buttons = new Button[] { sequencyMemory, verbalMemory };
+        reactionTimeTest.setText("Reaction Time Test", 28, com.raylib.Colors.BLACK);
+        buttons = new Button[] { sequencyMemory, verbalMemory, reactionTimeTest };
     }
 
     public void draw() {
@@ -60,11 +64,15 @@ public class TitleScreen {
         // Only set flags, do not transition scenes here
         verbalMemorySelected = false;
         sequenceGameSelected = false;
+        reactionTimeSelected = false;
         if (sequencyMemory.isClicked()) {
             sequenceGameSelected = true;
         }
         if (verbalMemory.isClicked()) {
             verbalMemorySelected = true;
+        }
+        if (reactionTimeTest.isClicked()) {
+            reactionTimeSelected = true;
         }
     }
 
@@ -80,9 +88,14 @@ public class TitleScreen {
         return sequenceGameSelected;
     }
 
+    public boolean isReactionTimeSelected() {
+        return reactionTimeSelected;
+    }
+
     public void reset() {
         verbalMemorySelected = false;
         sequenceGameSelected = false;
+        reactionTimeSelected = false;
         for (Button b : buttons) {
             b.update(); // clear click state
         }
