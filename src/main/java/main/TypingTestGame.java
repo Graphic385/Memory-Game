@@ -10,12 +10,14 @@ import static com.raylib.Raylib.GetCharPressed;
 import static com.raylib.Raylib.IsKeyPressed;
 import static com.raylib.Raylib.KEY_ENTER;
 import static com.raylib.Raylib.KEY_BACKSPACE;
+import static com.raylib.Helpers.newColor;
 
 import com.raylib.Raylib.Color;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -34,10 +36,10 @@ public class TypingTestGame extends MemoryGame {
     private long elapsedTime = 0;
     private int testDuration = 15; // seconds
     private int visibleWords = 12;
-    private Color background = new Color().r((byte) 62).g((byte) 136).b((byte) 210).a((byte) 255);
-    private Color black = new Color().r((byte) 0).g((byte) 0).b((byte) 0).a((byte) 255);
-    private Color green = new Color().r((byte) 0).g((byte) 180).b((byte) 0).a((byte) 255);
-    private Color red = new Color().r((byte) 200).g((byte) 0).b((byte) 0).a((byte) 255);
+    private Color background = newColor(62, 136, 210, 255);
+    private Color black = newColor(0, 0, 0, 255);
+    private Color green = newColor(0, 180, 0, 255);
+    private Color red = newColor(200, 0, 0, 255);
     private Random random = new Random();
     private int correctCharCount = 0;
     private int incorrectCharCount = 0;
@@ -50,7 +52,8 @@ public class TypingTestGame extends MemoryGame {
 
     private void loadWordsFromFile() {
         wordList.clear();
-        try (BufferedReader br = new BufferedReader(new FileReader("resources/10000-english-no-swears.txt"))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(ResourceLoader.loadResource("resources/10000-english-no-swears.txt")))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
@@ -282,7 +285,7 @@ public class TypingTestGame extends MemoryGame {
         float minutes = totalTime / 60.0f;
         int wpm = (int) (correctCharCount / 5.0f / minutes);
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         java.io.File file = new java.io.File(fileName);
         try {
             file.getParentFile().mkdirs();
@@ -338,7 +341,7 @@ public class TypingTestGame extends MemoryGame {
     @Override
     protected void onViewLeaderboard() {
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         List<String> lines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;

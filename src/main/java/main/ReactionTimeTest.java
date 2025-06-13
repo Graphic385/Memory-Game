@@ -192,7 +192,7 @@ public class ReactionTimeTest extends MemoryGame {
             return;
         }
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         java.io.File file = new java.io.File(fileName);
         try {
             file.getParentFile().mkdirs();
@@ -259,7 +259,7 @@ public class ReactionTimeTest extends MemoryGame {
     @Override
     protected void onViewLeaderboard() {
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         java.io.File file = new java.io.File(fileName);
         java.util.List<String> lines = new java.util.ArrayList<>();
         try {

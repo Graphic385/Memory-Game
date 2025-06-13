@@ -1,6 +1,0 @@
-d:8
-Domeni:64
-Domenic:55
-Richrd:41
-David:41
-richard:82

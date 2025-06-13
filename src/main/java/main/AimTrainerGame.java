@@ -7,9 +7,14 @@ import com.raylib.Raylib.Texture;
 import static com.raylib.Raylib.GetScreenWidth;
 import static com.raylib.Raylib.GetScreenHeight;
 import static com.raylib.Raylib.MeasureText;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 import static com.raylib.Raylib.DrawText;
 import static com.raylib.Raylib.IsMouseButtonPressed;
 import static com.raylib.Raylib.MOUSE_BUTTON_LEFT;
+import static com.raylib.Helpers.newColor;
 
 public class AimTrainerGame extends MemoryGame {
     private enum State {
@@ -22,14 +27,14 @@ public class AimTrainerGame extends MemoryGame {
     private Vector2 targetPos;
     private long startTime = 0;
     private long endTime = 0;
-    private Color background = new Color().r((byte) 62).g((byte) 136).b((byte) 210).a((byte) 255);
+    private Color background = newColor(62, 136, 210, 255);
     private Color textColor = com.raylib.Colors.BLACK;
     private Texture targetTexture;
     private int targetSize = 110; // Increased size for the target texture
 
     public AimTrainerGame() {
         super(GetScreenWidth() / 2);
-        targetTexture = LoadTexture("resources/target.png");
+        targetTexture = ResourceLoader.loadTexture(".png", "resources/target.png");
         reset();
     }
 
@@ -166,7 +171,7 @@ public class AimTrainerGame extends MemoryGame {
     @Override
     protected void onViewLeaderboard() {
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         java.util.List<String> lines = new java.util.ArrayList<>();
         try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(fileName))) {
             String line;

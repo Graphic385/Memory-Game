@@ -9,25 +9,27 @@ import static com.raylib.Raylib.GetScreenWidth;
 import static com.raylib.Raylib.IsKeyPressed;
 import static com.raylib.Raylib.KEY_ENTER;
 import static com.raylib.Raylib.MeasureText;
+import static com.raylib.Helpers.newColor;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 import com.raylib.Raylib.Color;
 
 public class VerbalMemoryGame extends MemoryGame {
-    private Color background = new Color().r((byte) 62).g((byte) 136).b((byte) 210).a((byte) 255);
-    private Color darkGray = new Color().r((byte) 80).g((byte) 80).b((byte) 80).a((byte) 255);
-    private Color maroon = new Color().r((byte) 128).g((byte) 0).b((byte) 0).a((byte) 255);
-    private Color black = new Color().r((byte) 0).g((byte) 0).b((byte) 0).a((byte) 255);
-    private Color lightGray = new Color().r((byte) 200).g((byte) 200).b((byte) 200).a((byte) 255);
-    private Color darkGreen = new Color().r((byte) 0).g((byte) 100).b((byte) 0).a((byte) 255);
+    private Color background = newColor(62, 136, 210, 255);
+    private Color darkGray = newColor(80, 80, 80, 255);
+    private Color maroon = newColor(128, 0, 0, 255);
+    private Color black = newColor(0, 0, 0, 255);
+    private Color lightGray = newColor(200, 200, 200, 255);
+    private Color darkGreen = newColor(0, 100, 0, 255);
     private Set<String> seenWords;
     private String currentWord;
     private int lives;
@@ -49,7 +51,8 @@ public class VerbalMemoryGame extends MemoryGame {
 
     private void loadWordsFromFile() {
         wordList = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("resources/10000-english-no-swears.txt"))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(ResourceLoader.loadResource("resources/10000-english-no-swears.txt")))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
