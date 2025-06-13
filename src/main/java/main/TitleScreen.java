@@ -48,7 +48,7 @@ public class TitleScreen {
         numberMemoryGame.addImageIcon(LoadTexture("resources/numberMemory.png"), 0.75f);
         reactionTimeTest.addImageIcon(LoadTexture("resources/reactionTime.png"), 0.75f);
         aimTrainerGame.addImageIcon(LoadTexture("resources/aimTrainer.png"), 0.75f);
-        typingTestGame.addImageIcon(LoadTexture("resources/verbalMemory.png"), 0.75f); // Placeholder icon
+        typingTestGame.addImageIcon(LoadTexture("resources/typingTest.png"), 0.75f); // Placeholder icon
         // Add to buttons array
         buttons = new Button[] { sequencyMemory, verbalMemory, reactionTimeTest, numberMemoryGame, aimTrainerGame,
                 typingTestGame };
@@ -57,8 +57,6 @@ public class TitleScreen {
     public void draw() {
         BeginDrawing();
         ClearBackground(backgroundColour);
-        // Draw big title text: 'Human' and 'Benchmark' on separate lines, black, much
-        // bigger
         String title1 = "Human";
         String title2 = "Benchmark";
         int fontSize1 = 160;
