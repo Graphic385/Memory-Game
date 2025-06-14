@@ -144,7 +144,7 @@ public abstract class MemoryGame {
             return;
         }
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         // Ensure the file exists before reading
         java.io.File file = new java.io.File(fileName);
         try {
@@ -205,7 +205,7 @@ public abstract class MemoryGame {
 
     protected void onViewLeaderboard() {
         String className = this.getClass().getSimpleName();
-        String fileName = "src/main/java/main/Leaderboards/" + className + ".txt";
+        String fileName = "leaderboards/" + className + ".txt";
         List<String> lines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
